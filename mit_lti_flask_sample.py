@@ -27,7 +27,8 @@ def hello_world(lti=lti):
 
 @app.route('/',methods=['GET','POST'])
 @app.route('/index', methods=['GET'])
-@lti(request='any', error=error, app=app)
+@app.route('/lti/', methods=['GET','POST'])
+@lti(request='initial', error=error, app=app)
 def index(lti=lti):
     return render_template('index.html', lti=lti)
 
@@ -50,7 +51,7 @@ def grade(lti=lti):
     lti.post_grade(1 if correct else 0)
     return render_template('grade.html', form=form)
 
-if __name__ == '__main__':
+def set_debugging():
     import logging
     import sys
 
@@ -63,4 +64,8 @@ if __name__ == '__main__':
     ch.setFormatter(formatter)
     root.addHandler(ch)
 
+set_debugging()
+
+if __name__ == '__main__':
+#    set_debugging()
     app.run(debug=True)
