@@ -49,8 +49,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'mit_lti_flask_sample'
-copyright = u'2014, Ivan Ceraj, Peter Wilkins'
+project = u'LTI Provider for Flask'
+copyright = u'2014, Massachusetts Institute of Technology'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -104,7 +104,7 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'default'
+html_theme = 'kr'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -112,7 +112,8 @@ html_theme = 'default'
 #html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-#html_theme_path = []
+sys.path.append(os.path.abspath('_themes'))
+html_theme_path = ['_themes']
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -203,7 +204,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   ('index', 'mit_lti_flask_sample.tex', u'mit\\_lti\\_flask\\_sample Documentation',
-   u'Ivan Ceraj, Peter Wilkins', 'manual'),
+   u'Massachusetts Institute of Technology', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -233,7 +234,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'mit_lti_flask_sample', u'mit_lti_flask_sample Documentation',
-     [u'Ivan Ceraj, Peter Wilkins'], 1)
+     [u'Massachusetts Institute of Technology'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -247,7 +248,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'mit_lti_flask_sample', u'mit_lti_flask_sample Documentation',
-   u'Ivan Ceraj, Peter Wilkins', 'mit_lti_flask_sample', 'One line description of project.',
+   u'Massachusetts Institute of Technology', 'mit_lti_flask_sample', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -262,3 +263,9 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+# exclude_patterns are a list of glob-style patterns that should be excluded
+# when looking for source files. They are matched against the source file names
+# relative to the source directory, using slashes as directory separators on
+# all platforms.
+exclude_patterns=['_themes/README.rst',]
