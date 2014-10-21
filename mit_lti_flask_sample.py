@@ -22,6 +22,11 @@ def error(exception=dict()):
 
 @app.route('/is_up', methods=['GET'])
 def hello_world(lti=lti):
+    """ Indicate the app is working. Provided for debugging purposes.
+
+    :param lti:
+    :return: simple page that indicates the request was processed.
+    """
     return render_template('up.html', lti=lti)
 
 

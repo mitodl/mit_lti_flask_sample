@@ -12,6 +12,11 @@ Contents:
    :maxdepth: 2
 
    introduction
+   apidocs/mit_lti_flask_sample
+
+
+.. automodule:: mit_lti_flask_sample
+    :members:
 
 
 Indices and tables
