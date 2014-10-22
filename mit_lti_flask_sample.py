@@ -33,6 +33,11 @@ def hello_world(lti=lti):
 def index(lti=lti):
     return render_template('index.html', lti=lti)
 
+@app.route('/index_staff',methods=['GET','POST'])
+@lti(request='session', error=error, roles='staff', app=app)
+def index_staff(lti=lti):
+    return render_template('staff.html', lti=lti)
+
 
 @app.route('/add', methods=['GET'])
 @lti(request='session', error=error, app=app)
