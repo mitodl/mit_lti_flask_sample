@@ -1,6 +1,4 @@
 .*.sw*
-*.pyc
-*.pyo
 *.pkl
 *~
 .DS_Store

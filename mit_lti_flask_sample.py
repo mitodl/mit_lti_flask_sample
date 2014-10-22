@@ -6,6 +6,7 @@ from random import randint
 
 from pylti.flask import lti
 
+VERSION = '0.0.1'
 app = Flask(__name__)
 app.config.from_object('config')
 
@@ -16,7 +17,7 @@ class AddFrom(Form):
     result = IntegerField('result')
     correct = BooleanField('correct')
 
-def error(exception=dict()):
+def error(exception=None):
     return render_template('error.html')
 
 
