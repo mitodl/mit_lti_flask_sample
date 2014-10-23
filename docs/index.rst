@@ -11,9 +11,8 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   introduction
-   apidocs/mit_lti_flask_sample
-
+   contents
+   apidocs/modules
 
 .. automodule:: mit_lti_flask_sample
     :members:

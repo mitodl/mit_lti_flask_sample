@@ -74,7 +74,11 @@ release = VERSION
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build']
+exclude_patterns = ['_themes/README.rst',]
+
+# List of directories, relative to source directory, that shouldn't be searched
+# for source files.
+exclude_trees = ['_build']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -264,9 +268,3 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
-
-# exclude_patterns are a list of glob-style patterns that should be excluded
-# when looking for source files. They are matched against the source file names
-# relative to the source directory, using slashes as directory separators on
-# all platforms.
-exclude_patterns=['_themes/README.rst',]

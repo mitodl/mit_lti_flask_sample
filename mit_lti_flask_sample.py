@@ -12,12 +12,19 @@ app.config.from_object('config')
 
 
 class AddFrom(Form):
+    """ Add form data
+    """
     p1 = IntegerField('p1')
     p2 = IntegerField('p2')
     result = IntegerField('result')
     correct = BooleanField('correct')
 
 def error(exception=None):
+    """ render error page
+
+    :param exception:
+    :return:
+    """
     return render_template('error.html')
 
 
@@ -25,8 +32,9 @@ def error(exception=None):
 def hello_world(lti=lti):
     """ Indicate the app is working. Provided for debugging purposes.
 
-    :param lti:
-    :return: simple page that indicates the request was processed.
+    :param lti: the `lti` object from `pylti`
+    :return: simple page that indicates the request was processed by the lti
+        provider
     """
     return render_template('up.html', lti=lti)
 
@@ -36,12 +44,23 @@ def hello_world(lti=lti):
 @app.route('/lti/', methods=['GET','POST'])
 @lti(request='initial', error=error, app=app)
 def index(lti=lti):
+    """ initial access page to the lti provider.  This page provides
+      authorization for the user.
+
+    :param lti: the `lti` object from `pylti`
+    :return: index page for lti provider
+    """
     return render_template('index.html', lti=lti)
 
 
 @app.route('/add', methods=['GET'])
 @lti(request='session', error=error, app=app)
 def add_form(lti=lti):
+    """ initial access page for lti consumer
+
+    :param lti: the `lti` object from `pylti`
+    :return: index page for lti provider
+    """
     form = AddFrom()
     form.p1.data = randint(1, 100)
     form.p2.data = randint(1, 100)
@@ -51,6 +70,11 @@ def add_form(lti=lti):
 @app.route('/grade', methods=['POST'])
 @lti(request='session', error=error, app=app)
 def grade(lti=lti):
+    """
+
+    :param lti:
+    :return:
+    """
     form = AddFrom()
     correct = ((form.p1.data + form.p2.data) == form.result.data)
     form.correct.data = correct
@@ -58,6 +82,10 @@ def grade(lti=lti):
     return render_template('grade.html', form=form)
 
 def set_debugging():
+    """
+
+    :return:
+    """
     import logging
     import sys
 
