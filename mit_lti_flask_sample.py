@@ -43,8 +43,8 @@ def index_staff(lti=lti):
 @lti(request='session', error=error, app=app)
 def add_form(lti=lti):
     form = AddFrom()
-    form.p1.data = randint(1, 100)
-    form.p2.data = randint(1, 100)
+    form.p1.data = randint(1, 9)
+    form.p2.data = randint(1, 9)
     return render_template('add.html', form=form)
 
 
