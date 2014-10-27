@@ -12,6 +12,8 @@ Contents:
    :maxdepth: 2
 
    introduction
+   lets_get_started
+   deploy_to_heroku
 
 
 Indices and tables
