@@ -2,7 +2,9 @@ Deploy to Heroku
 ================
 
 Heroku is a popular hosting service that offers free deployment for low volume
-applications and a sliding pricing model for higher demand applications.
+applications and a sliding pricing model for higher demand applications.  For the
+purpose of documentation, we will use use Heroku as our deployment target though
+you may deploy to most any host you want.
 
 Application changes for Heroku Support
 --------------------------------------
@@ -22,6 +24,8 @@ runtime.txt
 Heroku uses the contents of ``runtime.txt`` to pin the Python runtime to a specific
 version.  The app has been tested with the Python runtime version found in the file.
 
+
+
 Foreman development server
 **************************
 
@@ -31,7 +35,7 @@ Heroku support.)  Foreman allows you to simulate the Heroku runtime environment
 locally; very handy to help you verify that your app will run once deployed.  You
 can run your app with this terminal command ``foreman start``.  Once your app starts,
 navigate to ``http://localhost:5000/is_up`` to confirm that the app is working.  The
-page will display the text "I'm up".  (You were hoping for something more flashy?)
+page will display the text "I'm up".
 
 
 
