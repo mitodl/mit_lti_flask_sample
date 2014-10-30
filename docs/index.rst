@@ -12,7 +12,7 @@ Contents:
    :maxdepth: 2
 
    introduction
-   lets_get_started
+   tutorial
    deploy_to_heroku
 
 
