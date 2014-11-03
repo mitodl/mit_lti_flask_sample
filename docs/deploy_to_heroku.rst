@@ -1,11 +1,25 @@
 Deploy to Heroku
 ================
 
+An LTI provider must run on a server accessible by your LTI consumer.  This
+documentation assumes your LTI consumer is edX, but the principle is the same
+regardless.
+
 Heroku is a popular hosting service that offers free deployment for low volume
 applications and a sliding pricing model for higher demand applications.  For the
-purpose of documentation, we will use use Heroku as our deployment target though
-you may deploy to most any host you want.
+purpose of documentation we will use use Heroku as our deployment target though
+you may deploy to most any host or hosting service you want.
 
+The following steps have these prerequisites:
+
+* you have cloned the ``mit_lti_flask_sample`` to your development machine
+* you can open a terminal window and navigate to the cloned sample code
+
+.. note::
+   The following steps presume that you have a collection of command line
+   utilities installed on your machine.  These utilities are installed by
+   default on Linux machines, and freely available for OSX and Windows
+   machines.  This link will guide you to resources for your operation system.
 
 Heroku Deployment
 -----------------
@@ -18,7 +32,7 @@ following the Python track of their tutorial.
    a free account.
 #. Once you have an account, the Heroku site will guide you to install the Heroku
    Toolbelt and upload your SSH keypair.  Your SSH keypair authenticates you to
-   Heroku.  If you don't have a SSH keypair, Heroku provides a link on the page
+   Heroku.  If you don't have a SSH keypair, Heroku provides a link on their page
    to help you create one.
 #. The next step of the Heroku tutorial, "Prepare the app", presumes you don't have an
    app to deploy, but you do!  (If you haven't cloned the sample app to a local
@@ -28,14 +42,16 @@ following the Python track of their tutorial.
    in the Heroku tutorial.
 
 
-Application changes for Heroku Support
---------------------------------------
+At this point, you should have
+
+Application changes made for Heroku Support
+-------------------------------------------
 
 The items described below are in the sample solely to support Heroku deployment.
 If you are not deploying to Heroku, you can ignore them.
 
 Procfile
-************
+********
 
 Heroku requires a text file named ``Procfile`` to reside in the application's root
 directory.  Heroku documents the contents of the Procfile

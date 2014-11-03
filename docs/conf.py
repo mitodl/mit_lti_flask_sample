@@ -270,3 +270,6 @@ texinfo_documents = [
 # relative to the source directory, using slashes as directory separators on
 # all platforms.
 exclude_patterns=['_themes/README.rst',]
+
+# display todo notes in the documentation
+todo_include_todos=True
