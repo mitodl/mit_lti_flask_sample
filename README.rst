@@ -12,5 +12,5 @@ its specific framework.  Since the interface to the pylti module remains the
 same for each, you may easily switch your custom provider from one framework to
 another.
 
-Please see the pylti `README <https://github.mit.edu/mitxlti/pylti>`_ for a
+Please see the pylti `README <https://github.com/mitodl/pylti>`_ for a
 detailed description of the architecture.
