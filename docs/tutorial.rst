@@ -8,10 +8,11 @@ Tutorial: LTI interfacing to edX
 The mit_lti_flask_sample is a template for building LTI modules for edX.
 The intent of this tutorial is to show how to:
 
+    * Exploring the LTI sample template
     * Create a new LTI project from the sample template
-    * deploy the sample
-    * create an LTI from the sample
-    * use the LTI in a course
+    * Deploy the sample
+    * Create an LTI from the sample
+    * Use the LTI in a course
 
 This is a sample LTI provider for the Flask framework.  It is one of a series of
 LTI providers written for popular frameworks.  Each of these samples consumes
@@ -26,8 +27,8 @@ another.
 
 For a description of the architecture please see `Pylti architecture`_.
 
-Create a new LTI project from the sample template
-*************************************************
+Exploring the LTI sample template
+*********************************
 
 In a browser go to `mit lti flask sample template`_ and copy the "SSH clone URL".
 You will paste "SSH clone URL" in the "git clone" command below.
@@ -37,25 +38,43 @@ generating keys:
 
     https://help.github.com/articles/generating-ssh-keys/
 
-In a terminal window execute the following commands (you may want to use sudo)::
+In a terminal window execute the following commands::
+
+    $ git clone --origin source SSH_clone_URL mit_lti_flask_sample
+    $ cd mit_lti_flask_sample
+    $ sudo pip install -r requirements.txt
+
+The pip install may take a while.
+
+To run the sample locally:
+
+    $ export PATH=$PATH:`pwd`/scripts
+    $ run.sh
+
+In a browser type:
+
+    http://127.0.0.1:5000/is_up
+
+Create a new LTI from the sample
+*****************************
+
+Make a new one::
 
     $ git clone --origin source SSH_clone_URL your-new-lti-project
     $ cd your-new-lti-project
     $ git create your-new-lti-project
     $ git log
+    $ sudo pip install -r requirements.txt
 
-Deploy the sample
-*****************
+// a portion of creating LTI is in edX doc - look in HipChat from Peter to me
+http://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html
+
+Deploy the new LTI
+******************
 
 .. toctree::
 
     deploy_to_heroku.rst
-
-Create an LTI from the sample
-*****************************
-
-// a portion of creating LTI is in edX doc - look in HipChat from Peter to me
-http://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html
 
 Use the LTI in a course
 ***********************
