@@ -1,6 +1,6 @@
 .. _Pylti architecture: https://github.com/mitodl/pylti/docs/_build/architecture.html
 .. _mit lti flask sample template: https://github.mit.edu/mitxlti/mit_lti_flask_sample/
-.. _deploy to heroku: https://github.mit.edu/mitxlti/mit_lti_flask_sample/docs/_build/deploy_to_heroku.html/
+.. _deploy to heroku: deploy_to_heroku.rst
 
 Tutorial: LTI interfacing to edX
 ================================
@@ -44,19 +44,20 @@ In a terminal window execute the following commands (you may want to use sudo)::
     $ git create your-new-lti-project
     $ git log
 
-deploy the sample
+Deploy the sample
 *****************
 
-Follow the instructions in `deploy to heroku`_.
-This doesn't work correctly, so there must be a better solution.
+.. toctree::
 
-create an LTI from the sample
+    deploy_to_heroku.rst
+
+Create an LTI from the sample
 *****************************
 
 // a portion of creating LTI is in edX doc - look in HipChat from Peter to me
 http://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html
 
-use the LTI in a course
+Use the LTI in a course
 ***********************
 
 http://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html
