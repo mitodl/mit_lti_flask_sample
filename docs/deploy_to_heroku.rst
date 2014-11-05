@@ -29,8 +29,8 @@ The documentation that Heroku provides for preparing your machine and installing
 required software is excellent.  Start there by getting a Heroku account and
 following the Python track of their tutorial.
 
-1. Navigate to `https://www.heroku.com <https://www.heroku.com>`_ to sign up for
-   a free account.
+1. In your browser, navigate to `https://www.heroku.com <https://www.heroku.com>`_
+   to sign up for a free account.
 #. Once you have an account, the Heroku site will guide you to install the Heroku
    Toolbelt and upload your SSH keypair.  Your SSH keypair authenticates you to
    Heroku.  If you don't have a SSH keypair, Heroku provides a link on their page
@@ -47,7 +47,7 @@ will run in the Heroku environment.  You can do this by using an application
 installed as part of the Heroku Toolbelt.
 
 ``foreman`` development server
-******************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Heroku provides a development server called ``foreman`` as part of its "Heroku
 Toolbelt".  (You should have installed the "Toolbelt" in the 'Introduction'
@@ -59,8 +59,16 @@ command: ::
 
 Once your app starts, navigate to
 ``http://localhost:5000/is_up`` to confirm that the app is working.  The
-page will display the text "I'm up".  To terminate the app, type ``Cntl-C`` in
-the terminal.
+page will display the text "I'm up" if the app is working properly.  To
+terminate the app, type ``Cntl-C`` in the terminal.
+
+Now that you know that your app will run in the Heroku environment, your next
+step is deploying your app to Heroku.
+
+
+command: ::
+  Dwarf:~ grumpy$ heroku create
+
 
 
 Application changes made for Heroku Support
@@ -74,7 +82,8 @@ If you are not deploying to Heroku, you can ignore them.
 
 Heroku requires a text file named ``Procfile`` to reside in the application's root
 directory.  Heroku documents the contents of the Procfile here:
-`https://devcenter.heroku.com/articles/procfile <https://devcenter.heroku.com/articles/procfile>`_
+`https://devcenter.heroku.com/articles/procfile
+<https://devcenter.heroku.com/articles/procfile>`_
 
 ``runtime.txt``
 ***************
