@@ -75,29 +75,32 @@ In a terminal window execute the following commands::
 
     $ mkdir my_Projects
     $ cd my_Projects
-    $ git clone git@github.mit.edu:mitxlti/mit_lti_flask_sample.git mit_lti_flask_sample
+    $ git clone git@github.mit.edu:mitxlti/mit_lti_flask_sample.git
     $ cd mit_lti_flask_sample
     $ pip install -r requirements.txt
 
 The pip install may take a while.
 
-To run the sample locally:
+To run the sample as http locally from my_Projects/mit_lti_flask_sample/::
 
-    $ ls mit_lti_flask_sample
-    $ cd mit_lti_flask_sample
+    $ pwd
     $ python mit_lti_flask_sample.py
 
 In a browser for running http type:
 
     http://127.0.0.1:5000/is_up
 
+To run the sample as https locally from my_Projects/mit_lti_flask_sample/::
+
+    $ pwd
+    $ uwsgi --wsgi-file `pwd`/mit_lti_flask_sample.py --master --http 0.0.0.0:8400 --https 0.0.0.0:8443,scripts/foobar.crt,scripts/foobar.key --plugin python --py-autoreload 1 --honour-stdin --catch-exceptions --callable app
+
 In a browser for running https type:
 
-    uwsgi --wsgi-file `pwd`/mit_lti_flask_sample.py --master --http 0.0.0.0:8400 --https 0.0.0.0:8443,scripts/foobar.crt,scripts/foobar.key --plugin python --py-autoreload 1 --honour-stdin --catch-exceptions --callable app
-
+    https://0.0.0.0:8443/is_up
 
 Create a new LTI from the sample
-*****************************
+********************************
 
 Make a new one::
 
