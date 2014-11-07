@@ -17,6 +17,7 @@ The following steps have these prerequisites:
 * you have installed the ``git`` command line tool, or some other git client.
 
 .. note::
+
    The following steps presume that you have a collection of command line
    utilities installed on your machine.  These utilities are installed by
    default on Linux machines, and freely available for OSX.  This link will
@@ -55,6 +56,7 @@ step of the Heroku 'getting started' process.)  Foreman allows you to simulate
 the Heroku runtime environment locally; very handy to help you verify that
 your app will run once deployed.  You can run your app with this terminal
 command: ::
+
   Dwarf:~ grumpy$ foreman start
 
 Once your app starts, navigate to
@@ -67,6 +69,7 @@ step is deploying your app to Heroku.
 
 
 command: ::
+
   Dwarf:~ grumpy$ heroku create
 
 
