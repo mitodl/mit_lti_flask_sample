@@ -81,7 +81,7 @@ The items described below are in the sample solely to support Heroku deployment.
 If you are not deploying to Heroku, you can ignore them.
 
 ``Procfile``
-************
+^^^^^^^^^^^^
 
 Heroku requires a text file named ``Procfile`` to reside in the application's root
 directory.  Heroku documents the contents of the Procfile here:
@@ -89,7 +89,7 @@ directory.  Heroku documents the contents of the Procfile here:
 <https://devcenter.heroku.com/articles/procfile>`_
 
 ``runtime.txt``
-***************
+^^^^^^^^^^^^^^^
 
 Heroku uses the contents of ``runtime.txt`` to pin the Python runtime to a specific
 version.  The app has been tested with the Python runtime version found in the file.
@@ -106,7 +106,7 @@ If you already have an account, navigate to
 to proceed with the process.
 
 Get a Heroku account
-********************
+^^^^^^^^^^^^^^^^^^^^
 
 Heroku 'getting started' tutorial contains these steps.
 
