@@ -1,4 +1,3 @@
-.. _Pylti architecture: https://github.com/mitodl/pylti/docs/_build/architecture.html
 .. _mit lti flask sample template: https://github.mit.edu/mitxlti/mit_lti_flask_sample/
 .. _deploy to heroku: deploy_to_heroku.rst
 
@@ -10,23 +9,30 @@ The intent of this tutorial is to show how to:
 
     * Create a Virtual Environment to explore the LTI sample
     * Explore the LTI sample template
-    * Create a new LTI project from the sample template
-    * Deploy the sample
+    * Deploy the LTI sample to a server
+    * Use the LTI sample in a course
     * Create an LTI from the sample
-    * Use the LTI in a course
 
-This is a sample LTI provider for the Flask framework.  It is one of a series of
-LTI providers written for popular frameworks.  Each of these samples consumes
-the pylti module.  You will need both this app and the pylti module to run
-the sample.
+This is a sample LTI provider for the Flask framework.  It is a minimal
+implementation that provides a starting point for a custom LTI provider.
+It is one of a series of LTI providers written for popular frameworks and
+using the Python LTI library, PyLTI.  Additional sample LTI providers for
+other Python frameworks are listed on the PyLTI Github site,
+`https://github.com/mitodl/pylti
+<https://github.com/mitodl/pylti>`_.  While these LTI provider examples can
+be used with any LTI consumer, they were created for use with edX.  Integrating
+an LTI provider with edX is described in the edX LTI `docs.
+<http://edx.readthedocs.org/projects/edx-partner-course-staff/en/latest/exercises_tools/lti_component.html>`_
 
-By creating an interface boundary between the provider and
-the library, each sample contains only the code variations necessary to support
-its specific framework.  Since the interface to the pylti module remains the
-same for each, you may easily switch your custom provider from one framework to
-another.
+You will need both this app and the PyLTI library to create your own LTI
+provider.  Each sample contains only the code variations necessary to support
+its specific framework.  By creating an interface boundary between a sample
+provider and PyLTI, PyLTI manages the specific LTI features and each sample
+manages the specific requirements of its framework.  You can easily switch your
+custom provider from one framework to another.
 
-For a description of the architecture please see `Pylti architecture`_.
+Please see the PyLTI README `https://github.com/mitodl/pylti
+<https://github.com/mitodl/pylti>`_ for a detailed description of the architecture.
 
 Create a Virtual Environment to explore the sample
 **************************************************
@@ -99,29 +105,71 @@ In a browser for running https type:
 
     https://0.0.0.0:8443/is_up
 
-Create a new LTI from the sample
-********************************
+If you see a page containing the words, "I'm up", you have verified that you
+can run the sample app locally.
 
-Make a new one::
+Deploy the LTI sample to a server
+*********************************
 
-    $ git clone --origin source SSH_clone_URL your-new-lti-project
-    $ cd your-new-lti-project
-    $ git create your-new-lti-project
-    $ git log
-    $ sudo pip install -r requirements.txt
+Deploy the sample app to a server accessible from your LTI consumer (e.g edX or
+another LMS).
 
-// a portion of creating LTI is in edX doc - look in HipChat from Peter to me
-http://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html
-
-Deploy the new LTI
-******************
+If there is no server currently available from your LTI consumer.
+The following instructions show how to deploy the sample to the
+Heroku service, but the instructions are similar for any server.
 
 .. toctree::
 
     deploy_to_heroku.rst
 
-Use the LTI in a course
-***********************
+Run the LTI sample with http and https on the heroku server in a
+browser as you did locally only with the heroku URLs (see above).
 
+Set up a production edX on your machine if you don't currently have
+a version of edX to exercise the mit_lti_flask_sample.
+
+.. toctree::
+
+    setup_edX_fullstack.rst
+
+Use the LTI sample to a course
+******************************
+
+In edX Studio, navigate to ``?????`` and enter these
+values for the specified keys.
+
+    Create a course
+    Publish the course
+    Preview the course
+
+In edX Studio, navigate to ``Settings\Advanced Settings`` and enter these
+
+    Modify the course advanced settings
+
+======================= ========================
+Keys                    Values
+======================= ========================
+Advanced Module List    ``[ lti ]``
+----------------------- ------------------------
+LTI Passports           ``[ "lti_starx_add_demo:__consumer_key__:__lti_secret__", "lti_starx_star_pedigree:__key__:__secret__" ]``
+======================= ========================
+
+    Create a new problem that uses the LTI sample
+        Create a new problem of type ``Advanced->LTI``
+        Edit the problem and you get a long form
+            use passport thing
+            use heroku server
+        PUBLISH THE PROBLEM
+        PREVIEW
+
+    Verify that the LTI sample works:
+        Displays the LTI user interface in the new problem
+        Returns a grade
+
+
+Create an LTI provider from the sample
+**************************************
+
+// a portion of creating LTI is in edX doc - look in HipChat from Peter to me
 http://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html
 
