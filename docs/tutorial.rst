@@ -132,7 +132,7 @@ a version of edX to exercise the mit_lti_flask_sample.
 
     setup_edX_fullstack.rst
 
-Use the LTI sample to a course
+Use the LTI sample in a course
 ******************************
 
 In edX Studio, navigate to ``?????`` and enter these
