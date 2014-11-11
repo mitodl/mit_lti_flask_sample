@@ -12,8 +12,11 @@ app.config.from_object('config')
 
 
 class AddFrom(Form):
-    """ Add form data
+    """ Add data from Form
+
+    :param Form:
     """
+
     p1 = IntegerField('p1')
     p2 = IntegerField('p2')
     result = IntegerField('result')
@@ -22,8 +25,8 @@ class AddFrom(Form):
 def error(exception=None):
     """ render error page
 
-    :param exception:
-    :return:
+    :param exception: optional exception
+    :return: the error.html template rendered
     """
     return render_template('error.html')
 
@@ -45,7 +48,7 @@ def hello_world(lti=lti):
 @lti(request='initial', error=error, app=app)
 def index(lti=lti):
     """ initial access page to the lti provider.  This page provides
-      authorization for the user.
+    authorization for the user.
 
     :param lti: the `lti` object from `pylti`
     :return: index page for lti provider
@@ -55,6 +58,11 @@ def index(lti=lti):
 @app.route('/index_staff',methods=['GET','POST'])
 @lti(request='session', error=error, roles='staff', app=app)
 def index_staff(lti=lti):
+    """ render the contents of the staff.html template
+
+    :param lti: the `lti` object from `pylti`
+    :return: the staff.html template rendered
+    """
     return render_template('staff.html', lti=lti)
 
 
@@ -75,10 +83,10 @@ def add_form(lti=lti):
 @app.route('/grade', methods=['POST'])
 @lti(request='session', error=error, app=app)
 def grade(lti=lti):
-    """
+    """ post grade
 
-    :param lti:
-    :return:
+    :param lti: the `lti` object from `pylti`
+    :return: grade rendered by grade.html template
     """
     form = AddFrom()
     correct = ((form.p1.data + form.p2.data) == form.result.data)
@@ -87,9 +95,8 @@ def grade(lti=lti):
     return render_template('grade.html', form=form)
 
 def set_debugging():
-    """
+    """ enable debug logging
 
-    :return:
     """
     import logging
     import sys
