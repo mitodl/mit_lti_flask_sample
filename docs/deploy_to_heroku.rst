@@ -31,7 +31,11 @@ required software is excellent.  Start there by getting a Heroku account and
 following the Python track of their tutorial.
 
 1. In your browser, navigate to `https://www.heroku.com <https://www.heroku.com>`_
-   to sign up for a free account.
+   to sign up for a free account.  If you already have an account, navigate to
+   `https://devcenter.heroku.com/articles/getting-started-with-python#introduction
+   <https://devcenter.heroku.com/articles/getting-started-with-python#introduction>`_
+   to proceed with the process.
+
 #. Once you have an account, the Heroku site will guide you to install the Heroku
    Toolbelt and upload your SSH keypair.  Your SSH keypair authenticates you to
    Heroku.  If you don't have a SSH keypair, Heroku provides a link on their page
@@ -105,21 +109,4 @@ Heroku uses the contents of ``runtime.txt`` to pin the Python runtime to a speci
 version.  The app has been tested with the Python runtime version found in the file.
 
 
-----
-
-Parking lot for snippits
-------------------------
-
-If you already have an account, navigate to
-`https://devcenter.heroku.com/articles/getting-started-with-python#introduction
-<https://devcenter.heroku.com/articles/getting-started-with-python#introduction>`_
-to proceed with the process.
-
-Get a Heroku account
-^^^^^^^^^^^^^^^^^^^^
-
-Heroku 'getting started' tutorial contains these steps.
-
-1. Introduction - Get a Heroku account and configure your machine
-#. Set up - install the Heroku Toolbelt, upload your SSH keypair
 
