@@ -27,35 +27,40 @@ no reason to preserve existing Vagrant/VirtualBox instances:
     Reboot your machine to insure that you are off to a clean start.
 
 To ``INSTALL`` the edX production stack in a Terminal Window
-(the edX production installation is lengthy and takes a while)::
+(the edX production installation takes a several minutes)::
 
     $ mkdir fullstack
     $ cd fullstack
     $ curl -L https://raw.githubusercontent.com/edx/configuration/master/vagrant/release/fullstack/Vagrantfile > Vagrantfile
     $ vagrant plugin install vagrant-hostsupdater
-    $ vagrant up
 
-    The ``vagrant up`` will complete the installation and start edX VM.
+    The ``ACTIVATE`` instructions will complete the installation and start edX VM.
     At this point you can leave the Terminal Window and the edX VM will
     continue to be active.
 
 To ``ACTIVATE`` the edX server on an existing VM::
 
-    $ vagrant up
+    $ vagrant status (expect "not created" or "poweroff mode")
+    $ vagrant halt (if the status is not "poweroff mode")
+    $ vagrant up (first time after install - password is for writing files to your machine)
+
+    ``password:`` is for the administrator of your machine
 
 To ``DEACTIVATE`` a running edX server::
 
     $ vagrant halt
 
 
-Default username/password: vagrant/vagrant
-
 Run a sample course in edX
 **************************
 
-Once the VM is running, you can access the LMS and Studio at these URLS:
+Once the VM is activated, you can access the LMS and Studio at these URLS:
 
         LMS: http://192.168.33.10/
+            sign in as: ``staff@example.com`` password: ``edx``
+            notice the edX Demo Course
+
         Studio: http://192.168.33.10:18010/
-        The basic auth user and password are both set to "edx"
+            sign in as: ``staff@example.com`` password: ``edx``
+
 

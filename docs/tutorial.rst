@@ -9,9 +9,10 @@ The intent of this tutorial is to show how to:
 
     * Create a Virtual Environment to explore the LTI sample
     * Explore the LTI sample template
-    * Deploy the LTI sample to a server
+    * Setup edX locally
     * Use the LTI sample in a course
     * Create an LTI from the sample
+    * Deploy the LTI sample to a heroku server
 
 This is a sample LTI provider for the Flask framework.  It is a minimal
 implementation that provides a starting point for a custom LTI provider.
@@ -35,7 +36,7 @@ Please see the PyLTI README `https://github.com/mitodl/pylti
 <https://github.com/mitodl/pylti>`_ for a detailed description of the architecture.
 
 Create a Virtual Environment to explore the sample
-**************************************************
+--------------------------------------------------
 
 "A Virtual Environment ... is an isolated working copy of Python which allows
 you to work on a specific project without worry of affecting other project."
@@ -63,7 +64,7 @@ To ``DESTROY`` it::
     $ rm -Rv ./PyVENV
 
 Explore the LTI sample template
-*********************************
+-------------------------------
 
 You will need to have an ssh keys for github, so here is a precise guide to
 generating keys:
@@ -108,8 +109,64 @@ In a browser for running https type:
 If you see a page containing the words, "I'm up", you have verified that you
 can run the sample app locally.
 
-Deploy the LTI sample to a server
-*********************************
+
+Setup edX locally
+-----------------
+
+The following section illustrates the steps for setting up and edX server
+and modifying the edX Demo course to use the LTI sample. Other LTI consumers
+will have a similar process.
+
+.. toctree::
+
+    setup_edX_fullstack.rst
+
+
+Use the LTI Sample in the edX Demonstration Course
+--------------------------------------------------
+
+The following section illustrates the steps for modifying the edX Demo course to use the LTI sample.
+Other LTI consumers will have a similar process.
+
+In edX Studio you will use the LTI Sample the ``edX Demonstration Course`` that appears on your ``My Courses`` page.
+
+    Click on the ``edX Demonstration Course Demo_Course``
+
+    Navigate to ``Settings\Advanced Settings`` and enter these
+
+        Add the following to the course advanced settings. These values let edX know that your course
+        will use the "lti_starx_add_demo:__consumer_key__:__lti_secret__" password to access the LTI Sample.
+
+        ======================= ========================
+        Keys                    Values
+        ======================= ========================
+        Advanced Module List    ``[ "lti" ]``
+        ----------------------- ------------------------
+        LTI Passports           ``[ "lti_starx_add_demo:__consumer_key__:__lti_secret__" ]``
+        ======================= ========================
+
+
+    Create a new problem that uses the LTI Sample
+        Create a new problem of type ``Advanced->LTI``
+        Edit the problem and you get a long form
+            use passport thing
+            use heroku server
+        PUBLISH THE PROBLEM
+        PREVIEW
+
+    Verify that the LTI sample works:
+        Displays the LTI user interface in the new problem
+        Returns a grade
+
+
+Create an LTI provider from the sample
+--------------------------------------
+
+// a portion of creating LTI is in edX doc - look in HipChat from Peter to me
+http://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html
+
+Deploy the LTI sample to a heroku server
+----------------------------------------
 
 Deploy the sample app to a server accessible from your LTI consumer (e.g edX or
 another LMS).
@@ -127,49 +184,3 @@ browser as you did locally only with the heroku URLs (see above).
 
 Set up a production edX on your machine if you don't currently have
 a version of edX to exercise the mit_lti_flask_sample.
-
-.. toctree::
-
-    setup_edX_fullstack.rst
-
-Use the LTI sample in a course
-******************************
-
-In edX Studio, navigate to ``?????`` and enter these
-values for the specified keys.
-
-    Create a course
-    Publish the course
-    Preview the course
-
-In edX Studio, navigate to ``Settings\Advanced Settings`` and enter these
-
-    Modify the course advanced settings
-
-======================= ========================
-Keys                    Values
-======================= ========================
-Advanced Module List    ``[ lti ]``
------------------------ ------------------------
-LTI Passports           ``[ "lti_starx_add_demo:__consumer_key__:__lti_secret__", "lti_starx_star_pedigree:__key__:__secret__" ]``
-======================= ========================
-
-    Create a new problem that uses the LTI sample
-        Create a new problem of type ``Advanced->LTI``
-        Edit the problem and you get a long form
-            use passport thing
-            use heroku server
-        PUBLISH THE PROBLEM
-        PREVIEW
-
-    Verify that the LTI sample works:
-        Displays the LTI user interface in the new problem
-        Returns a grade
-
-
-Create an LTI provider from the sample
-**************************************
-
-// a portion of creating LTI is in edX doc - look in HipChat from Peter to me
-http://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html
-
