@@ -92,7 +92,7 @@ Application changes made for Heroku Support
 -------------------------------------------
 
 The items described below are in the sample solely to support Heroku deployment.
-If you are not deploying to Heroku, you can ignore or remove them.
+If you don't deploy to Heroku, you can ignore or remove them.
 
 ``Procfile``
 ^^^^^^^^^^^^
