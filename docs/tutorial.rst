@@ -10,9 +10,9 @@ The intent of this tutorial is to show how to:
     * Create a Virtual Environment to explore the LTI sample
     * Explore the LTI sample template
     * Setup edX locally
-    * Use the LTI sample in a course
-    * Create an LTI from the sample
+    * Use the LTI sample on the local server in a course
     * Deploy the LTI sample to a heroku server
+    * Use the LTI sample on the heroku server in a course
 
 This is a sample LTI provider for the Flask framework.  It is a minimal
 implementation that provides a starting point for a custom LTI provider.
@@ -35,8 +35,8 @@ custom provider from one framework to another.
 Please see the PyLTI README `https://github.com/mitodl/pylti
 <https://github.com/mitodl/pylti>`_ for a detailed description of the architecture.
 
-Create a Virtual Environment to explore the sample
---------------------------------------------------
+Create a Virtual Environment to explore the LTI sample
+------------------------------------------------------
 
 "A Virtual Environment ... is an isolated working copy of Python which allows
 you to work on a specific project without worry of affecting other project."
@@ -118,7 +118,7 @@ will have a similar process.
     setup_edX_fullstack.rst
 
 
-Use the LTI Sample in the edX Demonstration Course
+Use the LTI sample on the local server in a course
 --------------------------------------------------
 
 The following section illustrates the steps for modifying the edX Demo course to use the LTI sample.
@@ -157,12 +157,6 @@ In edX Studio you will use the LTI Sample the ``edX Demonstration Course`` that 
         Returns a grade
 
 
-Create an LTI provider from the sample
---------------------------------------
-
-// a portion of creating LTI is in edX doc - look in HipChat from Peter to me
-http://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html
-
 Deploy the LTI sample to a heroku server
 ----------------------------------------
 
@@ -177,8 +171,8 @@ Heroku service, but the instructions are similar for any server.
 
     deploy_to_heroku.rst
 
+Use the LTI sample on the heroku server in a course
+---------------------------------------------------
+
 Run the LTI sample with http and https on the heroku server in a
 browser as you did locally only with the heroku URLs (see above).
-
-Set up a production edX on your machine if you don't currently have
-a version of edX to exercise the mit_lti_flask_sample.
