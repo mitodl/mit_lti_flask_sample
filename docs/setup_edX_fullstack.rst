@@ -7,9 +7,7 @@ The intent of this tutorial is to show how to:
     * Download edX and run an
     * Run a sample course in edX
 
-References:
-
-    https://github.com/edx/configuration/wiki/edX-Production-Stack
+Reference:  `https://github.com/edx/configuration/wiki/edX-Production-Stack <https://github.com/edx/configuration/wiki/edX-Production-Stack>`_
 
 Create a virtual environment and run an edX server in it
 ********************************************************

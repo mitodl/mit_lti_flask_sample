@@ -18,7 +18,7 @@ This is a sample LTI provider for the Flask framework.  It is a minimal
 implementation that provides a starting point for a custom LTI provider.
 It is one of a series of LTI providers written for popular frameworks and
 using the Python LTI library, PyLTI.  Additional sample LTI providers for
-other Python frameworks are listed on the PyLTI Github site,
+other Python frameworks are listed on the PyLTI GitHub site,
 `https://github.com/mitodl/pylti
 <https://github.com/mitodl/pylti>`_.  While these LTI provider examples can
 be used with any LTI consumer, they were created for use with edX.  Integrating
@@ -41,18 +41,19 @@ Create a Virtual Environment to explore the sample
 "A Virtual Environment ... is an isolated working copy of Python which allows
 you to work on a specific project without worry of affecting other project."
 
-    http://docs.python-guide.org/en/latest/dev/vertualenvs/
+Reference: `http://docs.python-guide.org/en/latest/dev/vertualenvs/ <http://docs.python-guide.org/en/latest/dev/vertualenvs/>`_
 
-This sample expects the ``PyVENV`` folder to contain the Virtual Environment.
+This sample expects the ``PyVENV`` folder to contain the Virtual Environment for the sample.
 
 To ``CREATE`` the PyVENV Virtual Environment::
 
+    $ cd ~
     $ pip install virtualenv
     $ virtualenv PyVENV
 
 To ``ACTIVATE`` it::
 
-    $ source PyVENV/bin/activate
+    $ source ~/PyVENV/bin/activate
 
 To ``DEACTIVATE`` it::
 
@@ -61,28 +62,22 @@ To ``DEACTIVATE`` it::
 To ``DESTROY`` it::
 
     (PyVENV) $ deactivate
-    $ rm -Rv ./PyVENV
+    $ rm -Rv ~/PyVENV
 
 Explore the LTI sample template
 -------------------------------
 
-You will need to have an ssh keys for github, so here is a precise guide to
+You will need to have an ssh keys for GitHub, so here is a precise guide to
 generating keys:
 
     https://help.github.com/articles/generating-ssh-keys/
 
-.. warning::
-
-    In the ``git clone`` line below:
-
-        git@github.mit.edu:mitxlti/mit_lti_flask_sample.git expects the cloner to be a repository contributor.
-        git@github.mit.edu:mitxlti/mit_lti_flask_sample.git needs to be replaced below with the production repository’s URL.
-
 In a terminal window execute the following commands::
 
+    $ source ~/PyVENV/bin/activate
     $ mkdir my_Projects
     $ cd my_Projects
-    $ git clone git@github.mit.edu:mitxlti/mit_lti_flask_sample.git
+    $ git clone git@github.com/mitodl/mit_lti_flask_sample.git
     $ cd mit_lti_flask_sample
     $ pip install -r requirements.txt
 
@@ -93,21 +88,22 @@ To run the sample as http locally from my_Projects/mit_lti_flask_sample/::
     $ pwd
     $ python mit_lti_flask_sample.py
 
-In a browser for running http type:
+    In a browser for running http type:
 
-    http://127.0.0.1:5000/is_up
+        http://127.0.0.1:5000/is_up
+
+        If you see a page containing the words, "I'm up", you have verified that you can run the sample app locally.
 
 To run the sample as https locally from my_Projects/mit_lti_flask_sample/::
 
     $ pwd
     $ uwsgi --wsgi-file `pwd`/mit_lti_flask_sample.py --master --http 0.0.0.0:8400 --https 0.0.0.0:8443,scripts/foobar.crt,scripts/foobar.key --plugin python --py-autoreload 1 --honour-stdin --catch-exceptions --callable app
 
-In a browser for running https type:
+    In a browser for running https type:
 
-    https://0.0.0.0:8443/is_up
+        https://0.0.0.0:8443/is_up
 
-If you see a page containing the words, "I'm up", you have verified that you
-can run the sample app locally.
+        If you see a page containing the words, "I'm up", you have verified that you can run the sample app locally.
 
 
 Setup edX locally
@@ -127,6 +123,8 @@ Use the LTI Sample in the edX Demonstration Course
 
 The following section illustrates the steps for modifying the edX Demo course to use the LTI sample.
 Other LTI consumers will have a similar process.
+
+Reference: `http://edx.readthedocs.org/projects/edx-partner-course-staff/en/latest/exercises_tools/lti_component.html <http://edx.readthedocs.org/projects/edx-partner-course-staff/en/latest/exercises_tools/lti_component.html>`_
 
 In edX Studio you will use the LTI Sample the ``edX Demonstration Course`` that appears on your ``My Courses`` page.
 
