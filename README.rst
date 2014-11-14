@@ -62,3 +62,7 @@ LTI ID                  ``lti_starx_add_demo``
 LTI URL                 ``THE_URL_OF_YOUR_DEPLOYED_LTI_PROVIDER``
 ======================= ========================
 
+There is more comprehensive documentation of these settings at
+`http://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html
+<http://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html>`_
+
