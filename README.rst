@@ -46,7 +46,7 @@ Keys                    Values
 ======================= ========================
 Advanced Module List    ``[ lti ]``
 ----------------------- ------------------------
-LTI Passports           ``[ "lti_starx_add_demo:__consumer_key__:__lti_secret__", "lti_starx_star_pedigree:__key__:__secret__" ]``
+LTI Passports           ``[ "lti_starx_add_demo:__consumer_key__:__lti_secret__" ]``
 ======================= ========================
 
 7. Still in edX Studio, navigate to the content page that will contain your LTI
