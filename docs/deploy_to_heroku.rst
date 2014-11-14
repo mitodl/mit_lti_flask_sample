@@ -17,7 +17,6 @@ The following steps have these prerequisites:
 * you have installed the ``git`` command line tool, or some other git client.
 
 .. note::
-
    The following steps presume that you have a collection of command line
    utilities installed on your machine.  These utilities are installed by
    default on Linux machines, and freely available for OSX.  This link will
@@ -42,7 +41,7 @@ following the Python track of their tutorial.
    to help you create one.
 #. The next step of the Heroku tutorial, "Prepare the app", presumes you don't
    have an app to deploy, but you do!  (If you haven't cloned the sample app to
-   a local directory, see this guide. **!!Add link to git clone Tutorial!!**)
+   a local directory, see this guide :doc:`tutorial`.
    In your terminal window, navigate to the file system directory that contains
    the sample application you cloned earlier and proceed to the "Deploy the app"
    step in the Heroku tutorial.
@@ -59,9 +58,11 @@ Toolbelt".  (You should have installed the "Toolbelt" in the 'Introduction'
 step of the Heroku 'getting started' process.)  Foreman allows you to simulate
 the Heroku runtime environment locally; very handy to help you verify that
 your app will run once deployed.  You can run your app with this terminal
-command: ::
+command:
 
-  $ foreman start
+.. code-block:: bash
+
+  foreman start
 
 Once your app starts, navigate to
 ``http://localhost:5000/is_up`` to confirm that the app is working.  The
@@ -70,9 +71,11 @@ terminate the app, type ``Cntl-C`` in the terminal.
 
 Now that you know that your app will run in the Heroku environment, your next
 step is to deploy your app to Heroku.  Use the ``create`` is command to deploy
-your app: ::
+your app:
 
-  $ heroku create
+.. code-block:: bash
+
+  heroku create
   Creating salty-tundra-1591... done, stack is cedar-14
   https://salty-tundra-1591.herokuapp.com/ | git@heroku.com:salty-tundra-1591.git
 
