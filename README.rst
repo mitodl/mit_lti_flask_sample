@@ -64,3 +64,8 @@ LTI URL                 ``THE_URL_OF_YOUR_DEPLOYED_LTI_PROVIDER``
 
 .. [#f1] From their website, *"Flask is a microframework for Python based on
    Werkzeug, Jinja 2 and good intentions."* `http://flask.pocoo.org/ <http://flask.pocoo.org/>`_
+
+There is more comprehensive documentation of these settings at
+`http://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html
+<http://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html>`_
+

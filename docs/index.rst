@@ -11,9 +11,14 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   contents
+   apidocs/modules
    introduction
    tutorial
    deploy_to_heroku
+
+.. automodule:: mit_lti_flask_sample
+    :members:
 
 
 Indices and tables
