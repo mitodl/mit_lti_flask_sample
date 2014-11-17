@@ -42,7 +42,12 @@ To ``ACTIVATE`` the edX server on an existing VM::
     $ vagrant halt (if the status is not "poweroff mode")
     $ vagrant up (first time after install - password is for writing files to your machine)
 
-    ``password:`` is for the administrator of your machine
+        ``password:`` is for the administrator of your machine
+
+    $ vagrant ssh
+    $ sudo rm /edx/var/mongo/mongodb/mongod.lock
+    $ sudo /etc/init.d/mongodb restart
+
 
 To ``DEACTIVATE`` a running edX server::
 

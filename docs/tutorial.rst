@@ -72,18 +72,26 @@ generating keys:
 
     https://help.github.com/articles/generating-ssh-keys/
 
+In a browser::
+
+    Go to ``https://github.com/mitodl`` and fork the ``mit_lti_flask_sample`` repository
+    to (say) ``https://github.com/my_repositories``.
+
+    Navigate to the fork repository and change its name to (say) ``my_lti`` by:
+        Clicking on ``Settings`` and changing the value of ``Repository name``.
+
 In a terminal window execute the following commands::
 
     $ source ~/PyVENV/bin/activate
     $ mkdir my_Projects
     $ cd my_Projects
-    $ git clone git@github.com/mitodl/mit_lti_flask_sample.git
+    $ git clone git@github.com/my_repositories/my_lti.git
 
-To run the sample as http locally from my_Projects/mit_lti_flask_sample/::
+To run the sample as http locally from my_Projects/my_lti/::
 
-    $ cd ~/my_Projects/mit_lti_flask_sample
+    $ cd ~/my_Projects/my_lti
     $ pip install -r requirements.txt (this may take a while)
-    $ python mit_lti_flask_sample.py
+    $ python my_lti.py
 
     In a browser for running http type:
 
@@ -93,7 +101,7 @@ To run the sample as http locally from my_Projects/mit_lti_flask_sample/::
 
 To run the sample as https locally from my_Projects/mit_lti_flask_sample/::
 
-    $ cd ~/my_Projects/mit_lti_flask_sample
+    $ cd ~/my_Projects/my_lti
     $ pip install -r requirements.txt (this may take a while)
     $ uwsgi --wsgi-file `pwd`/mit_lti_flask_sample.py --master --http 0.0.0.0:8400 --https 0.0.0.0:8443,scripts/foobar.crt,scripts/foobar.key --plugin python --py-autoreload 1 --honour-stdin --catch-exceptions --callable app
 
@@ -130,6 +138,7 @@ In edX Studio you will use the LTI Sample in a new course.
 
     Click on ``Settings->Advanced Setting``
     In Manual Policy Definition add the following:
+
         ======================= ========================
         Keys                    Values
         ======================= ========================
@@ -137,6 +146,7 @@ In edX Studio you will use the LTI Sample in a new course.
         ----------------------- ------------------------
         LTI Passports           ``[ "lti_starx_add_demo:__consumer_key__:__lti_secret__" ]``
         ======================= ========================
+
     Click ``Save Changes``
 
     Click the ``+ New Section`` button and edit the Subsection to read ``Section LTI local``.
@@ -145,18 +155,35 @@ In edX Studio you will use the LTI Sample in a new course.
     Click the ``+ New Unit`` button
     Click the ``Advanced`` button
     Select LTI
-    Edit the LTI problem and add:
+
+    For http - Edit the LTI problem and add:
+
         ======================= ========================
         Keys                    Values
         ======================= ========================
         LTI ID                  ``"lti_starx_add_demo:__consumer_key__:__lti_secret__"``
         ----------------------- ------------------------
         LTI URL                 ``http://127.0.0.1:5000/``
+        ----------------------- ------------------------
+        Scored                  ``TRUE``
         ======================= ========================
+
+    For https - Edit the LTI problem and add:
+
+        ======================= ========================
+        Keys                    Values
+        ======================= ========================
+        LTI ID                  ``"lti_starx_add_demo:__consumer_key__:__lti_secret__"``
+        ----------------------- ------------------------
+        LTI URL                 ``https://0.0.0.0:8443/``
+        ----------------------- ------------------------
+        Scored                  ``TRUE``
+        ======================= ========================
+
     Click on ``"Save"``
 
     Click on ``"Publish"``
-    Click on ``"Review Changes"``
+    Click on ``"View Live Version"``
 
     Verify that the LTI sample works:
         Displays the LTI user interface in the new problem
@@ -184,14 +211,22 @@ Run the LTI sample with http and https on the heroku server in a
 browser as you did locally only with the heroku URLs (see above).
 
     Create a new problem that uses the LTI Sample
+
         Create a new problem of type ``Advanced->LTI``
+
         Edit the problem and you get a long form
+
             use passport thing
+
             use heroku server
+
         PUBLISH THE PROBLEM
+
         PREVIEW
 
     Verify that the LTI sample works:
+
         Displays the LTI user interface in the new problem
+
         Returns a grade
 

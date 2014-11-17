@@ -15,5 +15,8 @@ PYLTI_CONFIG = {
 PYLTI_URL_FIX = {
     "https://localhost:8000/": {
         "https://localhost:8000/": "http://localhost:8000/"
+    },
+    "https://localhost/": {
+        "https://localhost/":"http://192.168.33.10/"
     }
 }
