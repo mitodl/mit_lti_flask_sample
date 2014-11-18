@@ -2,7 +2,7 @@
 .. _deploy to heroku: deploy_to_heroku.rst
 
 Tutorial: Using the Sample LTI provider in edX
-================================
+==============================================
 
 The mit_lti_flask_sample is a template LTI provider for edX.
 The intent of this tutorial is to show how to:
