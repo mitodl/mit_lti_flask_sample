@@ -1,13 +1,13 @@
 .. _mit lti flask sample template: https://github.mit.edu/mitxlti/mit_lti_flask_sample/
 .. _deploy to heroku: deploy_to_heroku.rst
 
-Tutorial: LTI interfacing to edX
+Tutorial: Using the Sample LTI provider in edX
 ================================
 
-The mit_lti_flask_sample is a template for building LTI modules for edX.
+The mit_lti_flask_sample is a template LTI provider for edX.
 The intent of this tutorial is to show how to:
 
-    * Create a Virtual Environment to explore the LTI sample
+    * Create a Virtual Environment to explore the LTI sample provider
     * Explore the LTI sample template
     * Setup edX locally
     * Use the LTI sample on the local server in a course
@@ -103,7 +103,7 @@ To run the sample as https locally from my_Projects/mit_lti_flask_sample/::
 
     $ cd ~/my_Projects/my_lti
     $ pip install -r requirements.txt (this may take a while)
-    $ uwsgi --wsgi-file `pwd`/mit_lti_flask_sample.py --master --http 0.0.0.0:8400 --https 0.0.0.0:8443,scripts/foobar.crt,scripts/foobar.key --plugin python --py-autoreload 1 --honour-stdin --catch-exceptions --callable app
+    $ uwsgi --wsgi-file `pwd`/mit_lti_flask_sample.py --master --http 0.0.0.0:8400 --https 0.0.0.0:8443,certs/foobar.crt,certs/foobar.key --plugin python --py-autoreload 1 --honour-stdin --catch-exceptions --callable app
 
     In a browser for running https type:
 
