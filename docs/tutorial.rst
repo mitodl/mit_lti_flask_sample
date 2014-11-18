@@ -1,25 +1,24 @@
-.. _mit lti flask sample template: https://github.mit.edu/mitxlti/mit_lti_flask_sample/
 .. _deploy to heroku: deploy_to_heroku.rst
 
 Tutorial: Using the Sample LTI provider in edX
 ==============================================
 
-The mit_lti_flask_sample is a template LTI provider for edX.
+The mit_lti_flask_sample is a Flask LTI provider template for edX.
+
 The intent of this tutorial is to show how to:
 
-    * Create a Virtual Environment to explore the LTI sample provider
-    * Explore the LTI sample template
-    * Setup edX locally
-    * Use the LTI sample on the local server in a course
-    * Deploy the LTI sample to a heroku server
-    * Use the LTI sample on the heroku server in a course
+    * Create a Virtual Environment to explore the sample LTI provider
+    * Setup edX to run on localhost
+    * Deploy the sample LTI provider locally
+    * Use the local sample LTI provider in an edX course
+    * Deploy the sample LTI provider to an heroku server
+    * Use the heroku sample LTI provider in an edX course
 
 This is a sample LTI provider for the Flask framework.  It is a minimal
 implementation that provides a starting point for a custom LTI provider.
 It is one of a series of LTI providers written for popular frameworks and
 using the Python LTI library, PyLTI.  Additional sample LTI providers for
-other Python frameworks are listed on the PyLTI GitHub site,
-`https://github.com/mitodl/pylti
+other Python frameworks are planned, see `https://github.com/mitodl/pylti
 <https://github.com/mitodl/pylti>`_.  While these LTI provider examples can
 be used with any LTI consumer, they were created for use with edX.  Integrating
 an LTI provider with edX is described in the edX LTI `docs.
@@ -28,15 +27,15 @@ an LTI provider with edX is described in the edX LTI `docs.
 You will need both this app and the PyLTI library to create your own LTI
 provider.  Each sample contains only the code variations necessary to support
 its specific framework.  By creating an interface boundary between a sample
-provider and PyLTI, PyLTI manages the specific LTI features and each sample
+LTI provider and PyLTI, PyLTI manages the specific LTI features and each sample
 manages the specific requirements of its framework.  You can easily switch your
 custom provider from one framework to another.
 
 Please see the PyLTI README `https://github.com/mitodl/pylti
 <https://github.com/mitodl/pylti>`_ for a detailed description of the architecture.
 
-Create a Virtual Environment to explore the LTI sample
-------------------------------------------------------
+Create a Virtual Environment to explore the sample LTI provider
+---------------------------------------------------------------
 
 "A Virtual Environment ... is an isolated working copy of Python which allows
 you to work on a specific project without worry of affecting other project."
@@ -64,8 +63,19 @@ To ``DESTROY`` it::
     (PyVENV) $ deactivate
     $ rm -Rv ~/PyVENV
 
-Explore the LTI sample template
--------------------------------
+Setup edX to run on localhost
+-----------------------------
+
+The following section illustrates the steps for setting up and edX server
+Other LTI consumers will have a similar process.
+
+.. toctree::
+
+    setup_edX_fullstack.rst
+
+
+Deploy the sample LTI provider locally
+--------------------------------------
 
 You will need to have an ssh keys for GitHub, so here is a precise guide to
 generating keys:
@@ -112,21 +122,10 @@ To run the sample as https locally from my_Projects/mit_lti_flask_sample/::
         If you see a page containing the words, "I'm up", you have verified that you can run the sample app locally.
 
 
-Setup edX locally
------------------
-
-The following section illustrates the steps for setting up and edX server
-Other LTI consumers will have a similar process.
-
-.. toctree::
-
-    setup_edX_fullstack.rst
-
-
-Use the LTI sample on the local server in a course
+Use the local sample LTI provider in an edX course
 --------------------------------------------------
 
-The following section illustrates the steps for creating and edX course to use the LTI sample.
+The following section illustrates the steps for creating and edX course to use the sample LTI provider.
 Other LTI consumers will have a similar process.
 
 Reference: `http://edx.readthedocs.org/projects/edx-partner-course-staff/en/latest/exercises_tools/lti_component.html <http://edx.readthedocs.org/projects/edx-partner-course-staff/en/latest/exercises_tools/lti_component.html>`_
@@ -185,15 +184,15 @@ In edX Studio you will use the LTI Sample in a new course.
     Click on ``"Publish"``
     Click on ``"View Live Version"``
 
-    Verify that the LTI sample works:
+    Verify that the sample LTI provider works:
         Displays the LTI user interface in the new problem
         Returns a grade
 
 
-Deploy the LTI sample to a heroku server
-----------------------------------------
+Deploy the sample LTI provider to an heroku server
+--------------------------------------------------
 
-Deploy the sample app to a server accessible from your LTI consumer (e.g edX or
+Deploy the sample LTI provider to a server accessible from your LTI consumer (e.g edX or
 another LMS).
 
 If there is no server currently available from your LTI consumer.
@@ -204,13 +203,13 @@ Heroku service, but the instructions are similar for any server.
 
     deploy_to_heroku.rst
 
-Use the LTI sample on the heroku server in a course
+Use the heroku sample LTI provider in an edX course
 ---------------------------------------------------
 
-Run the LTI sample with http and https on the heroku server in a
+Run the sample LTI provider with http and https on the heroku server in a
 browser as you did locally only with the heroku URLs (see above).
 
-    Create a new problem that uses the LTI Sample
+    Create a new problem that uses the sample LTI provider
 
         Create a new problem of type ``Advanced->LTI``
 
@@ -224,7 +223,7 @@ browser as you did locally only with the heroku URLs (see above).
 
         PREVIEW
 
-    Verify that the LTI sample works:
+    Verify that the sample LTI provider works:
 
         Displays the LTI user interface in the new problem
 
