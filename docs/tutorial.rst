@@ -192,16 +192,45 @@ In edX Studio you will use the LTI Sample in a new course.
 Deploy the sample LTI provider to an heroku server
 --------------------------------------------------
 
-Deploy the sample LTI provider to a server accessible from your LTI consumer (e.g edX or
-another LMS).
-
-If there is no server currently available from your LTI consumer.
 The following instructions show how to deploy the sample to the
 Heroku service, but the instructions are similar for any server.
 
 .. toctree::
 
     deploy_to_heroku.rst
+
+Now that you have heroku installed and the sample deployed, it is useful to become familiar
+with heroku terminal commands:
+
+    Check that heroku is available::
+
+        $ heroku (will print the heroku commands)
+
+    Run the following general commands::
+
+        $ heroku auth:whoami (will display either your Email or a login prompt)
+        $ heroku auth:login (in case you are not already logged in)
+        $ heroku auth:logout (and login again as a confidence building exercise)
+        $ heroku apps (you should see your recently deployed app - if not, deploy your app)
+
+    Once ``heroku apps`` shows your deployed app - let's assume it's name is sheltered-springs-4102,
+    run the following commands on the app::
+
+        $ heroku sharing --app sheltered-springs-4102 (this will show if you have collaborators)
+        $ heroku addons --app sheltered-springs-4102 (this will show if you have addons)
+        $ heroku config --app sheltered-springs-4102 (this will show if you have config variables)
+        $ heroku domains --app sheltered-springs-4102 (this will show the name of your app's domain)
+        $ heroku logs --app sheltered-springs-4102 (just in case)
+
+    You need to add a couple of DYNO processes. The documentation lives in
+
+        https://devcenter.heroku.com/articles/scaling
+
+    Here are the commands::
+
+        $ heroku ps:scale --app sheltered-springs-4102 web=2
+        $ heroku ps --app sheltered-springs-4102 (this will show the current processes)
+
 
 Use the heroku sample LTI provider in an edX course
 ---------------------------------------------------
