@@ -4,7 +4,7 @@ License: BSD (FreeBSD version)
 The ``mit_lti_flask_sample`` codebase is licensed under the BSD (FreeBSD)
 license.
 
-.. topic:: The BSD 2-Clause License (also known as the FreeBSD license (Version: January 9, 2008)
+.. topic:: The BSD 2-Clause License (also known as the FreeBSD license) - Version: January 9, 2008
 
   Copyright (c) 2014, Massachusetts Institute of Technology
   All rights reserved.
