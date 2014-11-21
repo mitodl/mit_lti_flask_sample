@@ -1,51 +1,58 @@
-.. _Pylti architecture: https://github.com/mitodl/pylti/docs/_build/architecture.html
-.. _mit lti flask sample template: https://github.mit.edu/mitxlti/mit_lti_flask_sample/
 .. _deploy to heroku: deploy_to_heroku.rst
 
-Tutorial: LTI interfacing to edX
-================================
+Tutorial: Using the Sample LTI provider in edX
+==============================================
 
-The mit_lti_flask_sample is a template for building LTI modules for edX.
+The mit_lti_flask_sample is a Flask LTI provider template for edX.
+
 The intent of this tutorial is to show how to:
 
-    * Create a Virtual Environment to explore the LTI sample
-    * Explore the LTI sample template
-    * Create a new LTI project from the sample template
-    * Deploy the sample
-    * Create an LTI from the sample
-    * Use the LTI in a course
+    * Create a Virtual Environment to explore the sample LTI provider
+    * Setup edX to run on localhost
+    * Deploy the sample LTI provider locally
+    * Use the local sample LTI provider in an edX course
+    * Deploy the sample LTI provider to an heroku server
+    * Use the heroku sample LTI provider in an edX course
 
-This is a sample LTI provider for the Flask framework.  It is one of a series of
-LTI providers written for popular frameworks.  Each of these samples consumes
-the pylti module.  You will need both this app and the pylti module to run
-the sample.
+This is a sample LTI provider for the Flask framework.  It is a minimal
+implementation that provides a starting point for a custom LTI provider.
+It is one of a series of LTI providers written for popular frameworks and
+using the Python LTI library, PyLTI.  Additional sample LTI providers for
+other Python frameworks are planned, see `https://github.com/mitodl/pylti
+<https://github.com/mitodl/pylti>`_.  While these LTI provider examples can
+be used with any LTI consumer, they were created for use with edX.  Integrating
+an LTI provider with edX is described in the edX LTI `docs.
+<http://edx.readthedocs.org/projects/edx-partner-course-staff/en/latest/exercises_tools/lti_component.html>`_
 
-By creating an interface boundary between the provider and
-the library, each sample contains only the code variations necessary to support
-its specific framework.  Since the interface to the pylti module remains the
-same for each, you may easily switch your custom provider from one framework to
-another.
+You will need both this app and the PyLTI library to create your own LTI
+provider.  Each sample contains only the code variations necessary to support
+its specific framework.  By creating an interface boundary between a sample
+LTI provider and PyLTI, PyLTI manages the specific LTI features and each sample
+manages the specific requirements of its framework.  You can easily switch your
+custom provider from one framework to another.
 
-For a description of the architecture please see `Pylti architecture`_.
+Please see the PyLTI README `https://github.com/mitodl/pylti
+<https://github.com/mitodl/pylti>`_ for a detailed description of the architecture.
 
-Create a Virtual Environment to explore the sample
-**************************************************
+Create a Virtual Environment to explore the sample LTI provider
+---------------------------------------------------------------
 
 "A Virtual Environment ... is an isolated working copy of Python which allows
 you to work on a specific project without worry of affecting other project."
 
-    http://docs.python-guide.org/en/latest/dev/vertualenvs/
+Reference: `http://docs.python-guide.org/en/latest/dev/vertualenvs/ <http://docs.python-guide.org/en/latest/dev/vertualenvs/>`_
 
-This sample expects the ``PyVENV`` folder to contain the Virtual Environment.
+This sample expects the ``PyVENV`` folder to contain the Virtual Environment for the sample.
 
 To ``CREATE`` the PyVENV Virtual Environment::
 
+    $ cd ~
     $ pip install virtualenv
     $ virtualenv PyVENV
 
 To ``ACTIVATE`` it::
 
-    $ source PyVENV/bin/activate
+    $ source ~/PyVENV/bin/activate
 
 To ``DEACTIVATE`` it::
 
@@ -54,74 +61,200 @@ To ``DEACTIVATE`` it::
 To ``DESTROY`` it::
 
     (PyVENV) $ deactivate
-    $ rm -Rv ./PyVENV
+    $ rm -Rv ~/PyVENV
 
-Explore the LTI sample template
-*********************************
+Setup edX to run on localhost
+-----------------------------
 
-You will need to have an ssh keys for github, so here is a precise guide to
+The following section illustrates the steps for setting up and edX server
+Other LTI consumers will have a similar process.
+
+.. toctree::
+
+    setup_edX_fullstack.rst
+
+
+Deploy the sample LTI provider locally
+--------------------------------------
+
+You will need to have an ssh keys for GitHub, so here is a precise guide to
 generating keys:
 
     https://help.github.com/articles/generating-ssh-keys/
 
-.. warning::
+In a browser::
 
-    In the ``git clone`` line below:
+    Go to ``https://github.com/mitodl`` and fork the ``mit_lti_flask_sample`` repository
+    to (say) ``https://github.com/my_repositories``.
 
-        git@github.mit.edu:mitxlti/mit_lti_flask_sample.git expects the cloner to be a repository contributor.
-        git@github.mit.edu:mitxlti/mit_lti_flask_sample.git needs to be replaced below with the production repository’s URL.
+    Navigate to the fork repository and change its name to (say) ``my_lti`` by:
+        Clicking on ``Settings`` and changing the value of ``Repository name``.
 
 In a terminal window execute the following commands::
 
+    $ source ~/PyVENV/bin/activate
     $ mkdir my_Projects
     $ cd my_Projects
-    $ git clone git@github.mit.edu:mitxlti/mit_lti_flask_sample.git
-    $ cd mit_lti_flask_sample
-    $ pip install -r requirements.txt
+    $ git clone git@github.com/my_repositories/my_lti.git
 
-The pip install may take a while.
+To run the sample as http locally from my_Projects/my_lti/::
 
-To run the sample as http locally from my_Projects/mit_lti_flask_sample/::
+    $ cd ~/my_Projects/my_lti
+    $ pip install -r requirements.txt (this may take a while)
+    $ python my_lti.py
 
-    $ pwd
-    $ python mit_lti_flask_sample.py
+    In a browser for running http type:
 
-In a browser for running http type:
+        http://127.0.0.1:5000/is_up
 
-    http://127.0.0.1:5000/is_up
+        If you see a page containing the words, "I'm up", you have verified that you can run the sample app locally.
 
 To run the sample as https locally from my_Projects/mit_lti_flask_sample/::
 
-    $ pwd
-    $ uwsgi --wsgi-file `pwd`/mit_lti_flask_sample.py --master --http 0.0.0.0:8400 --https 0.0.0.0:8443,scripts/foobar.crt,scripts/foobar.key --plugin python --py-autoreload 1 --honour-stdin --catch-exceptions --callable app
+    $ cd ~/my_Projects/my_lti
+    $ pip install -r requirements.txt (this may take a while)
+    $ uwsgi --wsgi-file `pwd`/mit_lti_flask_sample.py --master --http 0.0.0.0:8400 --https 0.0.0.0:8443,certs/foobar.crt,certs/foobar.key --plugin python --py-autoreload 1 --honour-stdin --catch-exceptions --callable app
 
-In a browser for running https type:
+    In a browser for running https type:
 
-    https://0.0.0.0:8443/is_up
+        https://0.0.0.0:8443/is_up
 
-Create a new LTI from the sample
-********************************
+        If you see a page containing the words, "I'm up", you have verified that you can run the sample app locally.
 
-Make a new one::
 
-    $ git clone --origin source SSH_clone_URL your-new-lti-project
-    $ cd your-new-lti-project
-    $ git create your-new-lti-project
-    $ git log
-    $ sudo pip install -r requirements.txt
+Use the local sample LTI provider in an edX course
+--------------------------------------------------
 
-// a portion of creating LTI is in edX doc - look in HipChat from Peter to me
-http://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html
+The following section illustrates the steps for creating and edX course to use the sample LTI provider.
+Other LTI consumers will have a similar process.
 
-Deploy the new LTI
-******************
+Reference: `http://edx.readthedocs.org/projects/edx-partner-course-staff/en/latest/exercises_tools/lti_component.html <http://edx.readthedocs.org/projects/edx-partner-course-staff/en/latest/exercises_tools/lti_component.html>`_
+
+In edX Studio you will use the LTI Sample in a new course.
+
+    On the My Courses page  click the ``+ New Course`` button.
+    In the Create a New Course form fill out the fields.
+
+    Click on ``Settings->Advanced Setting``
+    In Manual Policy Definition add the following:
+
+        ======================= ========================
+        Keys                    Values
+        ======================= ========================
+        Advanced Module List    ``[ "lti" ]``
+        ----------------------- ------------------------
+        LTI Passports           ``[ "lti_starx_add_demo:__consumer_key__:__lti_secret__" ]``
+        ======================= ========================
+
+    Click ``Save Changes``
+
+    Click the ``+ New Section`` button and edit the Subsection to read ``Section LTI local``.
+
+    Click the ``+ New Subsection`` button and enter "LTI Problem"
+    Click the ``+ New Unit`` button
+    Click the ``Advanced`` button
+    Select LTI
+
+    For http - Edit the LTI problem and add:
+
+        ======================= ========================
+        Keys                    Values
+        ======================= ========================
+        LTI ID                  ``"lti_starx_add_demo:__consumer_key__:__lti_secret__"``
+        ----------------------- ------------------------
+        LTI URL                 ``http://127.0.0.1:5000/``
+        ----------------------- ------------------------
+        Scored                  ``TRUE``
+        ======================= ========================
+
+    For https - Edit the LTI problem and add:
+
+        ======================= ========================
+        Keys                    Values
+        ======================= ========================
+        LTI ID                  ``"lti_starx_add_demo:__consumer_key__:__lti_secret__"``
+        ----------------------- ------------------------
+        LTI URL                 ``https://0.0.0.0:8443/``
+        ----------------------- ------------------------
+        Scored                  ``TRUE``
+        ======================= ========================
+
+    Click on ``"Save"``
+
+    Click on ``"Publish"``
+    Click on ``"View Live Version"``
+
+    Verify that the sample LTI provider works:
+        Displays the LTI user interface in the new problem
+        Returns a grade
+
+
+Deploy the sample LTI provider to an heroku server
+--------------------------------------------------
+
+The following instructions show how to deploy the sample to the
+Heroku service, but the instructions are similar for any server.
 
 .. toctree::
 
     deploy_to_heroku.rst
 
-Use the LTI in a course
-***********************
+Now that you have heroku installed and the sample deployed, it is useful to become familiar
+with heroku terminal commands:
 
-http://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html
+    Check that heroku is available::
+
+        $ heroku (will print the heroku commands)
+
+    Run the following general commands::
+
+        $ heroku auth:whoami (will display either your Email or a login prompt)
+        $ heroku auth:login (in case you are not already logged in)
+        $ heroku auth:logout (and login again as a confidence building exercise)
+        $ heroku apps (you should see your recently deployed app - if not, deploy your app)
+
+    Once ``heroku apps`` shows your deployed app - let's assume it's name is sheltered-springs-4102,
+    run the following commands on the app::
+
+        $ heroku sharing --app sheltered-springs-4102 (this will show if you have collaborators)
+        $ heroku addons --app sheltered-springs-4102 (this will show if you have addons)
+        $ heroku config --app sheltered-springs-4102 (this will show if you have config variables)
+        $ heroku domains --app sheltered-springs-4102 (this will show the name of your app's domain)
+        $ heroku logs --app sheltered-springs-4102 (just in case)
+
+    You need to add a couple of DYNO processes. The documentation lives in
+
+        https://devcenter.heroku.com/articles/scaling
+
+    Here are the commands::
+
+        $ heroku ps:scale --app sheltered-springs-4102 web=1
+        $ heroku ps --app sheltered-springs-4102 (this will show the current processes)
+
+
+Use the heroku sample LTI provider in an edX course
+---------------------------------------------------
+
+Run the sample LTI provider with http and https on the heroku server in a
+browser as you did locally only with the heroku URLs (see above).
+
+    Create a new problem that uses the sample LTI provider
+
+        Create a new problem of type ``Advanced->LTI``
+
+        Edit the problem and you get a long form
+
+            use passport thing
+
+            use heroku server
+
+        PUBLISH THE PROBLEM
+
+        PREVIEW
+
+    Verify that the sample LTI provider works:
+
+        Displays the LTI user interface in the new problem
+
+        Returns a grade
 

@@ -1,7 +1,7 @@
 Sample LTI Provider for Flask
 =============================
 
-This is a sample LTI provider for the Flask framework.  It is a minimal
+This is a sample LTI provider for the Flask framework [#f1]_.  It is a minimal
 implementation that provides a starting point for a custom LTI provider.
 It is one of a series of LTI providers written for popular frameworks and
 using the Python LTI library, PyLTI.  Additional sample LTI providers for
@@ -61,6 +61,9 @@ LTI ID                  ``lti_starx_add_demo``
 ----------------------- ------------------------
 LTI URL                 ``THE_URL_OF_YOUR_DEPLOYED_LTI_PROVIDER``
 ======================= ========================
+
+.. [#f1] From their website, *"Flask is a microframework for Python based on
+   Werkzeug, Jinja 2 and good intentions."* `http://flask.pocoo.org/ <http://flask.pocoo.org/>`_
 
 There is more comprehensive documentation of these settings at
 `http://edx-partner-course-staff.readthedocs.org/en/latest/exercises_tools/lti_component.html
