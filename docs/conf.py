@@ -74,7 +74,11 @@ release = VERSION
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build']
+exclude_patterns = ['_themes/README.rst',]
+
+# List of directories, relative to source directory, that shouldn't be searched
+# for source files.
+exclude_trees = ['_build']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -270,3 +274,6 @@ texinfo_documents = [
 # relative to the source directory, using slashes as directory separators on
 # all platforms.
 exclude_patterns=['_themes/README.rst',]
+
+# display todo notes in the documentation
+todo_include_todos=True
