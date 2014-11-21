@@ -5,7 +5,7 @@ This is a sample LTI provider for the Flask framework.  It is a minimal
 implementation that provides a starting point for a custom LTI provider.
 It is one of a series of LTI providers written for popular frameworks and
 using the Python LTI library, PyLTI.  Additional sample LTI providers for
-other Python frameworks are listed on the PyLTI Github site,
+other Python frameworks are planned.  Check for them on the PyLTI Github site,
 `https://github.com/mitodl/pylti
 <https://github.com/mitodl/pylti>`_.  While these LTI provider examples can
 be used with any LTI consumer, they were created for use with edX.  Integrating
