@@ -262,7 +262,7 @@ Use the heroku sample LTI provider in an edX course
 Modifying the sample
 --------------------
 
-    The sample contains the following:
+    The sample contains the following: 
 
     ``my_lti``
 
