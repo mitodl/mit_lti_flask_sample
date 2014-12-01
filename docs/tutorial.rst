@@ -279,65 +279,28 @@ Modifying the sample
         ``runtime.txt``                 Defines the version of the runtime.
 
 
-    Diagram of the control flow from the edX course to the sample LTI Provider:
+    Here is the control flow from the edX course to the sample LTI Provider:
 
-        edX Course Problem ``LTI URL`` (e.g.http://sheltered-springs-4102.herokuapp.com/)
+        Your browser will call the edX Course Problem ``LTI URL`` (e.g.http://sheltered-springs-4102.herokuapp.com/)
+        and server will execute sample Flask LTI Provider ``app`` (e.g. ``mit_lti_flask_sample``).
 
-            |
+        The Flask app (see first few lines of ``mit_lti_flask_sample``) defines the following routes:
 
-            V
+            ``@app.route('/',methods=['GET','POST'])``
+            ``@app.route('/index', methods=['GET'])``
+            ``@app.route('/lti/', methods=['GET','POST'])``
 
-            Your Browser
+        Then executes the initial lti request:
 
-                |
+            ``@lti(request='initial', error=error, app=app)``
 
-                V
+            on @lti FAIL the following is executed:
+                def error(exception=None)
+                return render_template('error.html')
 
-                Server hosting sample Flask LTI Provider ``app`` (e.g. ``mit_lti_flask_sample``)
-
-                    |
-
-                    V
-
-                    Flask app (see first few lines of ``mit_lti_flask_sample``
-
-                        |               |       ...     |
-
-                        V               V               V
-
-                        ``app.route``   ``app.route``   ``app.route``
-
-                            |
-
-                            V
-
-                            ``@app.route('/',methods=['GET','POST'])``
-
-                            ``@app.route('/index', methods=['GET'])``
-
-                            ``@app.route('/lti/', methods=['GET','POST'])``
-
-                            ``@lti(request='initial', error=error, app=app)``
-
-                                    |                   |
-
-                                    |                   V
-
-                                    |                   FAIL
-
-                                    |                   def error(exception=None)
-
-                                    |                   return render_template('error.html')
-
-                                    V
-
-                                    OK
-
-                                    def index(lti=lti)
-
-                                    return render_template('index.html', lti=lti)
-
-
+            on @lti OK the following is executed:
+                def index(lti=lti)
+                return render_template('index.html', lti=lti)
 
     For the Flask tutorial used in the creation this sample LTI provider see:
 
