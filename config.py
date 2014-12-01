@@ -13,6 +13,11 @@ PYLTI_CONFIG = {
 }
 
 PYLTI_URL_FIX = {
+""" Remap URL to fix edX's misrepresentation of https protocol.
+    You can add another dict entry if you have trouble with the
+    PyLti URL.
+"""
+
     "https://localhost:8000/": {
         "https://localhost:8000/": "http://localhost:8000/"
     },

@@ -229,7 +229,7 @@ with heroku terminal commands:
 
     Here are the commands::
 
-        $ heroku ps:scale --app sheltered-springs-4102 web=2
+        $ heroku ps:scale --app sheltered-springs-4102 web=1
         $ heroku ps --app sheltered-springs-4102 (this will show the current processes)
 
 

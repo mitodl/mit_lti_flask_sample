@@ -1,8 +1,3 @@
-.. mit_lti_flask_sample documentation master file, created by
-   sphinx-quickstart on Wed Oct 15 13:13:02 2014.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 MIT's Sample LTI Provider for Flask
 ===================================
 
@@ -11,15 +6,11 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   contents
-   apidocs/modules
-   introduction
    tutorial
    deploy_to_heroku
-
-.. automodule:: mit_lti_flask_sample
-    :members:
-
+   cmd_line_tools
+   setup_edX_fullstack
+   license
 
 Indices and tables
 ==================
