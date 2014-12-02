@@ -13,6 +13,7 @@ The intent of this tutorial is to show how to:
     * Use the local sample LTI provider in an edX course
     * Deploy the sample LTI provider to an heroku server
     * Use the heroku sample LTI provider in an edX course
+    * Modifying the sample
 
 This is a sample LTI provider for the Flask framework.  It is a minimal
 implementation that provides a starting point for a custom LTI provider.
@@ -160,9 +161,9 @@ In edX Studio you will use the LTI Sample in a new course.
         ======================= ========================
         Keys                    Values
         ======================= ========================
-        LTI ID                  ``"lti_starx_add_demo:__consumer_key__:__lti_secret__"``
+        LTI ID                  ``lti_starx_add_demo``
         ----------------------- ------------------------
-        LTI URL                 ``http://127.0.0.1:5000/``
+        LTI URL                 ``http://127.0.0.1:5000``
         ----------------------- ------------------------
         Scored                  ``TRUE``
         ======================= ========================
@@ -172,9 +173,9 @@ In edX Studio you will use the LTI Sample in a new course.
         ======================= ========================
         Keys                    Values
         ======================= ========================
-        LTI ID                  ``"lti_starx_add_demo:__consumer_key__:__lti_secret__"``
+        LTI ID                  ``lti_starx_add_demo``
         ----------------------- ------------------------
-        LTI URL                 ``https://0.0.0.0:8443/``
+        LTI URL                 ``https://0.0.0.0:8443``
         ----------------------- ------------------------
         Scored                  ``TRUE``
         ======================= ========================
@@ -222,7 +223,7 @@ with heroku terminal commands:
         $ heroku domains --app sheltered-springs-4102 (this will show the name of your app's domain)
         $ heroku logs --app sheltered-springs-4102 (just in case)
 
-    You need to add a couple of DYNO processes. The documentation lives in
+    You need to add a DYNO process. The documentation lives in
 
         https://devcenter.heroku.com/articles/scaling
 
@@ -235,26 +236,72 @@ with heroku terminal commands:
 Use the heroku sample LTI provider in an edX course
 ---------------------------------------------------
 
-Run the sample LTI provider with http and https on the heroku server in a
-browser as you did locally only with the heroku URLs (see above).
+    To use the heroku hosted sample LTI provider replace the LTI URL key from above:
 
-    Create a new problem that uses the sample LTI provider
+    In a terminal window::
 
-        Create a new problem of type ``Advanced->LTI``
+        $ heroku domains --app sheltered-springs-4102
 
-        Edit the problem and you get a long form
+    ``Note: sheltered-springs-41-2 is an example app. You created your app above. Use its name.``
 
-            use passport thing
+    In the edX course LTI problem above:
 
-            use heroku server
+        Click the ``Advanced`` button
+        Select LTI
 
-        PUBLISH THE PROBLEM
+        For http - Edit the LTI problem and change ``127.0.0.1:5000`` to your app's domain name:
 
-        PREVIEW
+            ======================= ========================
+            Keys                    Values
+            ======================= ========================
+            ----------------------- ------------------------
+            ``LTI URL``             ``http://sheltered-springs-4102.herokuapp.com/``
+            ----------------------- ------------------------
+            ======================= ========================
 
-    Verify that the sample LTI provider works:
+Modifying the sample
+--------------------
 
-        Displays the LTI user interface in the new problem
+    The sample contains the following:
 
-        Returns a grade
+    ``my_lti``
 
+        ``certs/``                      Needed for running sample LTI provider with https.
+        ``docs/``                       LTI provider documentation as Shpinx restructured text.
+        ``templates/``                  Sample LTI html used in mit_lti_flask_sample.py.
+        ``.getignore``                  List of files that you don't want git to track.
+        ``config.py``                   Configuration information needed for LTI sample provider.
+        ``license.rst``                 The sample LTI provider license.
+        ``mit_lti_flask_sample.py``     Key file for connecting the LTI to the edX.
+        ``Procfile``                    Kicks off the mit_lti_flask_sample server.
+        ``README.rst``                  Synopsis of this folder.
+        ``requirements.txt``            Used to load all the libraries use by the LTI provider.
+        ``runtime.txt``                 Defines the version of the runtime.
+
+
+    Here is the control flow from the edX course to the sample LTI Provider:
+
+        Your browser will call the edX Course Problem ``LTI URL`` (e.g.http://sheltered-springs-4102.herokuapp.com/)
+        and server will execute sample Flask LTI Provider ``app`` (e.g. ``mit_lti_flask_sample``).
+
+        The Flask app (see first few lines of ``mit_lti_flask_sample``) defines the following routes:
+
+            ``@app.route('/',methods=['GET','POST'])``
+            ``@app.route('/index', methods=['GET'])``
+            ``@app.route('/lti/', methods=['GET','POST'])``
+
+        Then executes the initial lti request:
+
+            ``@lti(request='initial', error=error, app=app)``
+
+            on @lti FAIL the following is executed:
+                def error(exception=None)
+                return render_template('error.html')
+
+            on @lti OK the following is executed:
+                def index(lti=lti)
+                return render_template('index.html', lti=lti)
+
+    For the Flask tutorial used in the creation this sample LTI provider see:
+
+        http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
