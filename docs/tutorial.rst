@@ -161,9 +161,9 @@ In edX Studio you will use the LTI Sample in a new course.
         ======================= ========================
         Keys                    Values
         ======================= ========================
-        LTI ID                  ``"lti_starx_add_demo:__consumer_key__:__lti_secret__"``
+        LTI ID                  ``lti_starx_add_demo``
         ----------------------- ------------------------
-        LTI URL                 ``http://127.0.0.1:5000/``
+        LTI URL                 ``http://127.0.0.1:5000``
         ----------------------- ------------------------
         Scored                  ``TRUE``
         ======================= ========================
@@ -173,9 +173,9 @@ In edX Studio you will use the LTI Sample in a new course.
         ======================= ========================
         Keys                    Values
         ======================= ========================
-        LTI ID                  ``"lti_starx_add_demo:__consumer_key__:__lti_secret__"``
+        LTI ID                  ``lti_starx_add_demo``
         ----------------------- ------------------------
-        LTI URL                 ``https://0.0.0.0:8443/``
+        LTI URL                 ``https://0.0.0.0:8443``
         ----------------------- ------------------------
         Scored                  ``TRUE``
         ======================= ========================
@@ -223,7 +223,7 @@ with heroku terminal commands:
         $ heroku domains --app sheltered-springs-4102 (this will show the name of your app's domain)
         $ heroku logs --app sheltered-springs-4102 (just in case)
 
-    You need to add a couple of DYNO processes. The documentation lives in
+    You need to add a DYNO process. The documentation lives in
 
         https://devcenter.heroku.com/articles/scaling
 
@@ -262,7 +262,7 @@ Use the heroku sample LTI provider in an edX course
 Modifying the sample
 --------------------
 
-    The sample contains the following: 
+    The sample contains the following:
 
     ``my_lti``
 
