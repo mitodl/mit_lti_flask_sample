@@ -25,17 +25,22 @@ Please see the PyLTI README `https://github.com/mitodl/pylti
 Quick Start
 -----------
 
-1. Clone this repository,
-   ``git clone git@github.mit.edu:mitxlti/mit_lti_flask_sample.git``
-   and navigate to its directory
-#. Run ``pip install -r requirements.txt``
-#. Run ``scripts/run.sh``
-#. Navigate to ``http://localhost:5000/is_up``
+Open your terminal and navigate to the directory you want to contain your
+working directory.  Execute these commands:
+
+.. code-block:: bash
+
+   git clone git@github.com:mitodl/mit_lti_flask_sample.git
+   cd mit_lti_flask_sample
+   pip install -r requirements.txt
+   python mit-lti-flask-sample.py
+
+Then navigate to `http://localhost:5000/is_up <http://localhost:5000/is_up>`_
 
 If you see a page containing the words, "I'm up", you have verified that you
 can run the sample app locally.
 
-5. Deploy the sample app to a server accessible from your LTI consumer, edX or
+1. Deploy the sample app to a server accessible from your LTI consumer, edX or
    another LMS.  (These instructions presume you're using edX, but they are
    similar for any LTI consumer.)
 #. In edX Studio, navigate to ``Settings\Advanced Settings`` and enter these
@@ -49,7 +54,7 @@ Advanced Module List    ``[ lti ]``
 LTI Passports           ``[ "lti_starx_add_demo:__consumer_key__:__lti_secret__" ]``
 ======================= ========================
 
-7. Still in edX Studio, navigate to the content page that will contain your LTI
+3. Still in edX Studio, navigate to the content page that will contain your LTI
    tool and create an LTI Advanced Component.
 #. Enter the LTI ID for the external LTI provider.
 #. Enter the URL of the external tool that this component launches.
