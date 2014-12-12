@@ -1,3 +1,4 @@
+import os
 from flask import Flask, session, request
 from flask import render_template
 from flask.ext.wtf import Form
@@ -114,4 +115,6 @@ set_debugging()
 
 if __name__ == '__main__':
 #    set_debugging()
-    app.run(debug=True)
+    port = int(os.environ.get("FLASK_LTI_PORT", 5000))
+    host = os.environ.get("FLASK_LTI_HOST", "localhost")
+    app.run(debug=True, host=host, port=port)
