@@ -14,6 +14,8 @@
 
 import sys
 import os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 from mit_lti_flask_sample import VERSION
 
 # If extensions (or modules to document with autodoc) are in another directory,
