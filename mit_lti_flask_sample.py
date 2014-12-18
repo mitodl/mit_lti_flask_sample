@@ -1,5 +1,5 @@
 import os
-from flask import Flask, session, request
+from flask import Flask
 from flask import render_template
 from flask.ext.wtf import Form
 from wtforms import IntegerField, BooleanField
@@ -23,6 +23,7 @@ class AddFrom(Form):
     result = IntegerField('result')
     correct = BooleanField('correct')
 
+
 def error(exception=None):
     """ render error page
 
@@ -43,9 +44,9 @@ def hello_world(lti=lti):
     return render_template('up.html', lti=lti)
 
 
-@app.route('/',methods=['GET','POST'])
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET'])
-@app.route('/lti/', methods=['GET','POST'])
+@app.route('/lti/', methods=['GET', 'POST'])
 @lti(request='initial', error=error, app=app)
 def index(lti=lti):
     """ initial access page to the lti provider.  This page provides
@@ -56,7 +57,8 @@ def index(lti=lti):
     """
     return render_template('index.html', lti=lti)
 
-@app.route('/index_staff',methods=['GET','POST'])
+
+@app.route('/index_staff', methods=['GET', 'POST'])
 @lti(request='session', error=error, roles='staff', app=app)
 def index_staff(lti=lti):
     """ render the contents of the staff.html template
@@ -95,6 +97,7 @@ def grade(lti=lti):
     lti.post_grade(1 if correct else 0)
     return render_template('grade.html', form=form)
 
+
 def set_debugging():
     """ enable debug logging
 
@@ -114,7 +117,10 @@ def set_debugging():
 set_debugging()
 
 if __name__ == '__main__':
-#    set_debugging()
+    """
+    For if you want to run the flask development server
+    directly
+    """
     port = int(os.environ.get("FLASK_LTI_PORT", 5000))
     host = os.environ.get("FLASK_LTI_HOST", "localhost")
     app.run(debug=True, host=host, port=port)

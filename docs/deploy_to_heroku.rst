@@ -88,6 +88,65 @@ The ``create`` command returns useful information.  It indicates
 You can now use the URL of your deployed app on Heroku to test the sample
 against your edX course.
 
+Additional Heroku Configuration
+-------------------------------
+
+We recommend not storing secrets inside the git repository such as the
+OAuth keys needed for LTI security.  As a result, we have instrumented
+the ``config.py`` file to have an example of using environment
+variables to store these secrets.
+
+For example:
+
+.. code-block:: python
+
+  # SECRET KEY FOR AUTHENTICATION
+  SECRET_KEY = OS.ENVIRON.GET("FLASK_SECRET_KEY", "YOU-WILL-NEVER-GUESS")
+  CONSUMER_KEY_PEM_FILE = OS.PATH.ABSPATH('CONSUMER_KEY.PEM')
+  WITH OPEN(CONSUMER_KEY_PEM_FILE, 'W') AS WFILE:
+	  WFILE.WRITE(OS.ENVIRON.GET('CONSUMER_KEY_CERT', ''))
+
+  PYLTI_CONFIG = {
+	  "CONSUMERS": {
+		  "__CONSUMER_KEY__": {
+			  "SECRET": OS.ENVIRON.GET("CONSUMER_KEY_SECRET", "__LTI_SECRET__"),
+			  "CERT": CONSUMER_KEY_PEM_FILE
+		  }
+	  }
+  }
+
+Not that it is attempting to get the ``FLASK_SECRET_KEY``, the
+``CONSUMER_KEY_CERT`` and ``CONSUMER_KEY_SECRET`` environment
+variables to containt the actual secrets.  To do this in Heroku you
+can set these variables with the ``heroku config`` commands.  To set
+the flask secret to ``pink_unicorns`` and ``__consumer_key__`` secret
+to ``horn_of_plenty`` you would run:
+
+.. code-block:: bash
+
+  heroku config:set FLASK_SECRET_KEY=pink_unicorn CONSUMER_KEY_SECRET=horn_of_plenty
+
+To check your configuration, you can run ``heroku config`` by itself,
+and it will show what environment variables are set for your
+application.
+
+To replicate the secure configuration locally using ``foreman`` you can create a file in the root of the application at ``.env`` that contains K=V values for configuration.  i.e.
+
+.. code-block:: bash
+
+  FLASK_SECRET_KEY=pink_unicorn
+  CONSUMER_KEY_SECRET=horn_of_plent
+
+.. note::
+
+  Environment variables can be absolutely huge, so there is no problem
+  storing full client SSL certificates in the
+  ``CONSUMER_KEY_PEM_FILE`` if your application requires client
+  certificates in addition to the OAuth scheme.  ``config.py`` above,
+  for example, reads the environment variable the SSL certificate and
+  key and writes it out to a file for use by ``httplib`` during
+  execution on Heroku.
+
 Files added for Heroku Support
 ------------------------------
 

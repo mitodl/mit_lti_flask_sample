@@ -47,3 +47,5 @@ coverage.xml
 
 #PyCharm
 .idea
+
+*.pem
