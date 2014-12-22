@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 
-class AddFrom(Form):
+class AddForm(Form):
     """ Add data from Form
 
     :param Form:
@@ -75,7 +75,7 @@ def add_form(lti=lti):
     :param lti: the `lti` object from `pylti`
     :return: index page for lti provider
     """
-    form = AddFrom()
+    form = AddForm()
     form.p1.data = randint(1, 9)
     form.p2.data = randint(1, 9)
     return render_template('add.html', form=form)
@@ -89,7 +89,7 @@ def grade(lti=lti):
     :param lti: the `lti` object from `pylti`
     :return: grade rendered by grade.html template
     """
-    form = AddFrom()
+    form = AddForm()
     correct = ((form.p1.data + form.p2.data) == form.result.data)
     form.correct.data = correct
     lti.post_grade(1 if correct else 0)
