@@ -49,3 +49,6 @@ coverage.xml
 .idea
 
 *.pem
+
+# Test harness
+.pythoscope
