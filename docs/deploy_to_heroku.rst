@@ -7,7 +7,7 @@ for other LTI consumers.
 
 Heroku is a popular hosting service that offers free deployment for low volume
 applications and a sliding pricing model for higher demand applications.  For the
-purpose of documentation we will use use Heroku as our deployment target though
+purpose of documentation we will use Heroku as our deployment target though
 you may deploy to any host or hosting service you choose.
 
 The following steps have these prerequisites:
@@ -146,6 +146,15 @@ To replicate the secure configuration locally using ``foreman`` you can create a
   for example, reads the environment variable the SSL certificate and
   key and writes it out to a file for use by ``httplib`` during
   execution on Heroku.
+
+.. note::
+
+  Developers whose LTI app will be consumed by MITx will need an application
+  certificate issued by MIT IS&T to be able to send grades to edX.  You can
+  request an application certificate by following the instructions at this
+  support page
+  `https://wikis.mit.edu/confluence/display/devtools/How+to+acquire+and+verify+a+x509+Application+Certificate
+  <https://wikis.mit.edu/confluence/display/devtools/How+to+acquire+and+verify+a+x509+Application+Certificate>`_
 
 Files added for Heroku Support
 ------------------------------
