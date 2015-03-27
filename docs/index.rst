@@ -1,5 +1,3 @@
-MIT's Sample LTI Provider for Flask
-===================================
 
 .. include:: ../README.rst
 
