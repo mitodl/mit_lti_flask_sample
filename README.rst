@@ -19,6 +19,11 @@ provider and PyLTI, PyLTI manages the specific LTI features and each sample
 manages the specific requirements of its framework.  You can easily switch your
 custom provider from one framework to another.
 
+If you have questions or problems, please create an issue on the
+project's GitHub site,
+`https://github.com/mitodl/mit_lti_flask_sample/issues
+<https://github.com/mitodl/mit_lti_flask_sample/issues>`_
+
 Please see the PyLTI README `https://github.com/mitodl/pylti
 <https://github.com/mitodl/pylti>`_ for a detailed description of the architecture.
 
