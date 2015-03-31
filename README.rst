@@ -1,5 +1,9 @@
 Sample LTI Provider for Flask
 =============================
+|Deploy|
+
+.. |Deploy| image:: https://www.herokucdn.com/deploy/button.png
+   :target: https://heroku.com/deploy
 
 This is a sample LTI provider for the Flask framework [#f1]_.  It is a minimal
 implementation that provides a starting point for a custom LTI provider.
@@ -26,6 +30,21 @@ project's GitHub site,
 
 Please see the PyLTI README `https://github.com/mitodl/pylti
 <https://github.com/mitodl/pylti>`_ for a detailed description of the architecture.
+
+Super Quick Start
+-----------------
+
+You can try out the sample app for free by deploying it to your Heroku account
+simply by clicking the deploy button:
+
+|Deploy|
+
+.. |Deploy| image:: https://www.herokucdn.com/deploy/button.png
+   :target: https://heroku.com/deploy
+
+After deployment is complete you can customize the app from the Heroku
+git repository that is created.  This button will also work in forked
+repositories with your own modifications.
 
 Quick Start
 -----------
