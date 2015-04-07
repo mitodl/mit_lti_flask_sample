@@ -1,5 +1,9 @@
 Deploy to Heroku
 ================
+|Deploy|
+
+.. |Deploy| image:: https://www.herokucdn.com/deploy/button.png
+   :target: https://heroku.com/deploy
 
 An LTI provider must run on a server accessible by your LTI consumer.  This
 documentation assumes your LTI consumer is edX, but the principle is the same
@@ -20,7 +24,8 @@ The following steps have these prerequisites:
    The following steps presume that you have a collection of command line
    utilities installed on your machine.  These utilities are installed by
    default on Linux machines, and freely available for OSX.  This link will
-   guide you to resources for your operation system: :doc:`cmd_line_tools`
+   guide you to resources for your operation system:
+   :doc:`cmd_line_tools`
 
 Heroku Deployment
 -----------------
