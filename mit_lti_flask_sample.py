@@ -59,7 +59,7 @@ def index(lti=lti):
 
 
 @app.route('/index_staff', methods=['GET', 'POST'])
-@lti(request='session', error=error, roles='staff', app=app)
+@lti(request='session', error=error, role='staff', app=app)
 def index_staff(lti=lti):
     """ render the contents of the staff.html template
 
