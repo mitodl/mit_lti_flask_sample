@@ -1,1 +1,7 @@
-There was an error
+There was an error.
+
+{% if exception and exception.exception %}
+<blockquote>
+    Exception: {{exception.exception}}
+</blockquote>
+{% endif %}
