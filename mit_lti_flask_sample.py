@@ -30,7 +30,7 @@ def error(exception=None):
     :param exception: optional exception
     :return: the error.html template rendered
     """
-    return render_template('error.html')
+    return render_template('error.html', exception=exception)
 
 
 @app.route('/is_up', methods=['GET'])
