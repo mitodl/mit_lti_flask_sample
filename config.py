@@ -20,15 +20,27 @@ SECRET_KEY = os.environ.get("FLASK_SECRET_KEY", "you-will-never-guess")
 # )
 # ```
 
-CONSUMER_KEY_PEM_FILE = os.path.abspath('consumer_key.pem')
-with open(CONSUMER_KEY_PEM_FILE, 'w') as wfile:
-    wfile.write(os.environ.get('CONSUMER_KEY_CERT', ''))
+# The following would be the PYLTI_CONFIG for including a CONSUMER_KEY_PEM_FILE
+# This is NOT needed by default
+# CONSUMER_KEY_PEM_FILE = os.path.abspath('consumer_key.pem')
+# with open(CONSUMER_KEY_PEM_FILE, 'w') as wfile:
+#     wfile.write(os.environ.get('CONSUMER_KEY_CERT', ''))
 
+# PYLTI_CONFIG = {
+#     "consumers": {
+#         "__consumer_key__": {
+#             "secret": os.environ.get("CONSUMER_KEY_SECRET", "__lti_secret__"),
+#             "cert": CONSUMER_KEY_PEM_FILE
+#         }
+#     }
+# }
+
+# The following would be the PYLTI_CONFIG for a generic consumer.
+# The value of __consumer_key__ can be updated, but it will be the value of the client key 
 PYLTI_CONFIG = {
     "consumers": {
         "__consumer_key__": {
-            "secret": os.environ.get("CONSUMER_KEY_SECRET", "__lti_secret__"),
-            "cert": CONSUMER_KEY_PEM_FILE
+            "secret": os.environ.get("CONSUMER_KEY_SECRET", "__lti_secret__")
         }
     }
 }
