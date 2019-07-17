@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>Multiply Problem</title>
+</head>
+<body>
+
+<form action="{{ url_for('multiply.grade') }}" method="post" name="login">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.p1(readonly=true, disabled=True) }} *
+        {{ form.p2(readonly=true, disabled=True) }} =
+        {{ form.result(readonly=true, disabled=True) }}
+    </p>
+    Is correct? {{ form.correct(readonly=true, disabled=true) }}
+    <a href="{{ url_for('multiply.index') }}">New Problem</a>
+</form>
+
+</body>
+</html>
