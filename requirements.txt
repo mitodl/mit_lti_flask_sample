@@ -4,7 +4,7 @@ Jinja2==2.7.3
 MarkupSafe==0.23
 Pygments==1.6
 WTForms==2.0.1
-Werkzeug==0.9.6
+Werkzeug==0.15.3
 httplib2==0.9
 itsdangerous==0.24
 oauth==1.0.1
