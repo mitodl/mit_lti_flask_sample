@@ -5,7 +5,7 @@ MarkupSafe==0.23
 Pygments==1.6
 WTForms==2.0.1
 Werkzeug==0.9.6
-httplib2==0.9
+httplib2==0.18.0
 itsdangerous==0.24
 oauth==1.0.1
 oauth2==1.9.0.post1
