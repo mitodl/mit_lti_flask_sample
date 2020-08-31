@@ -9,7 +9,7 @@ httplib2==0.9
 itsdangerous==0.24
 oauth==1.0.1
 oauth2==1.9.0.post1
-uWSGI==2.0.13
+uWSGI==2.0.18
 urwid==1.2.1
 wsgiref==0.1.2
 Sphinx==1.2.3
