@@ -1,0 +1,18 @@
+<html>
+<head>
+    <title>Multiply Problem</title>
+</head>
+<body>
+
+<form action="{{ url_for('multiply.grade') }}" method="post" name="multiply_form">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.p1(readonly=true) }} *
+        {{ form.p2(readonly=true) }} =
+        {{ form.result }}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+</body>
+</html>

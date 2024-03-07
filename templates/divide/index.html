@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Divide Problem</title>
+</head>
+<body>
+
+<p>
+    Round to 2 digits precision after the decimal point. <br>
+    The result is to round accordingly to this <a href="https://docs.python.org/3/library/functions.html#round">round()</a> function.
+</p>
+<form action="{{ url_for('divide.grade') }}" method="post" name="divide_form">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.p1(readonly=true) }} /
+        {{ form.p2(readonly=true) }} =
+        {{ form.result }}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+</body>
+</html>

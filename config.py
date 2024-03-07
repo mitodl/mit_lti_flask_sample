@@ -3,6 +3,19 @@ Configuration file for flask sample application
 """
 import os
 
+BASE_PATH = os.path.abspath(os.path.curdir)
+DATABASES = {
+    'sqlite': {
+        'driver': 'sqlite',
+        'database':  '{}/database.db'.format(BASE_PATH)
+    }
+}
+EXERCISE_MAP = dict(
+    add='add.index',
+    multiply='multiply.index',
+    divide='divide.index',
+    staff='index.staff'
+)
 
 # enable CSRF
 WTF_CSRF_ENABLED = True
@@ -28,7 +41,7 @@ PYLTI_CONFIG = {
     "consumers": {
         "__consumer_key__": {
             "secret": os.environ.get("CONSUMER_KEY_SECRET", "__lti_secret__"),
-            "cert": CONSUMER_KEY_PEM_FILE
+            # "cert": CONSUMER_KEY_PEM_FILE
         }
     }
 }

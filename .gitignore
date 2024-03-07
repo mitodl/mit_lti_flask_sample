@@ -49,3 +49,6 @@ coverage.xml
 .idea
 
 *.pem
+
+# database
+database.db
